@@ -117,18 +117,18 @@ class FragmentOne : Fragment() {
             by hashmap
              */
 
-            //val inputStream: InputStream = resources.openRawResource(R.raw.product_json)
+            val inputStream: InputStream = resources.openRawResource(R.raw.product_json)
 
             /*val inputStream: InputStream = resources.openRawResource(
                 resources.getIdentifier(getString(R.string.product_json), "raw", packageName)
             )*/
-            val inputStream: InputStream = resources.openRawResource(
+            /*val inputStream: InputStream = resources.openRawResource(
                 resources.getIdentifier(
                     fileName.removeExtension(),
                     "raw",
                     requireActivity().packageName
                 )
-            )
+            )*/
             /*val inputStream: InputStream = resources.
             (
                 resources.getIdentifier("product_json", "raw", packageName)

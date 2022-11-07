@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">RepositoryPattern</string>
+    <string name="app_name">Repository Pattern</string>
     <string name="product_json">product_json</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="uddhav_p_gautam">Uddhav P. Gautam</string>
+    <string name="uddhav_gautam">Uddhav Gautam</string>
 </resources>
