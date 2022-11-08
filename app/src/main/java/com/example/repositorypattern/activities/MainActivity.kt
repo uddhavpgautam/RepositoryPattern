@@ -9,8 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.R
+import com.example.repositorypattern.cards.Card
 import com.google.android.material.appbar.AppBarLayout
+import kotlin.math.abs
 
 //eval `ssh-agent -s`; ssh-add /Users/roshanidahal/.ssh/id_rsa; git push
 class MainActivity : AppCompatActivity() {
@@ -22,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         const val WAIT_FOR_SWITCH = 0
         const val SWITCHED = 1
     }
+
+    private lateinit var viewPager: ViewPager2
 
     private lateinit var ivUserAvatar: ImageView
     private var EXPAND_AVATAR_SIZE: Float = 0F
@@ -44,6 +52,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewPager = findViewById(R.id.pager)
+        viewPager.setPageTransformer(ZoomOutPageTransformer())
+        val pagerAdapter = ScreenSlidePagerAdapter(this)
+        viewPager.adapter = pagerAdapter
+
 
         EXPAND_AVATAR_SIZE = resources.getDimension(R.dimen.default_expanded_image_size)
         COLLAPSE_IMAGE_SIZE = resources.getDimension(R.dimen.default_collapsed_image_size)
@@ -59,25 +77,23 @@ class MainActivity : AppCompatActivity() {
 
         (toolbar.height - COLLAPSE_IMAGE_SIZE) * 2
         /**/
-        appBarLayout.addOnOffsetChangedListener(
-            AppBarLayout.OnOffsetChangedListener { appBarLayout, i ->
-                if (isCalculated.not()) {
-                    avatarAnimateStartPointY =
-                        Math.abs((appBarLayout.height - (EXPAND_AVATAR_SIZE + horizontalToolbarAvatarMargin)) / appBarLayout.totalScrollRange)
-                    avatarCollapseAnimationChangeWeight = 1 / (1 - avatarAnimateStartPointY)
-                    verticalToolbarAvatarMargin = (toolbar.height - COLLAPSE_IMAGE_SIZE) * 2
-                    isCalculated = true
-                }
-                /**/
-                updateViews(Math.abs(i / appBarLayout.totalScrollRange.toFloat()))
-            })
+        appBarLayout.addOnOffsetChangedListener { appBarLayout, i ->
+            if (isCalculated.not()) {
+                avatarAnimateStartPointY =
+                    Math.abs((appBarLayout.height - (EXPAND_AVATAR_SIZE + horizontalToolbarAvatarMargin)) / appBarLayout.totalScrollRange)
+                avatarCollapseAnimationChangeWeight = 1 / (1 - avatarAnimateStartPointY)
+                verticalToolbarAvatarMargin = (toolbar.height - COLLAPSE_IMAGE_SIZE) * 2
+                isCalculated = true
+            }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_one_container_view, FragmentOne.newInstance()).commitNow()
+            updateViews(abs(i / appBarLayout.totalScrollRange.toFloat()))
+        }
+
+        /*supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_one_container_view, FragmentOne.newInstance()).commitNow()*/
     }
 
     private fun updateViews(offset: Float) {
-        /* apply levels changes*/
         when (offset) {
             in 0.15F..1F -> {
                 titleToolbarText.apply {
@@ -166,6 +182,20 @@ class MainActivity : AppCompatActivity() {
                         translationX = 0f
                     }
                 }
+            }
+        }
+    }
+
+    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+
+        override fun getItemCount(): Int {
+            return Card.DECK.size + 1 //1 for FragmentOne
+        }
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                in 1 until 52 -> CardFragment.create(Card.DECK[position])
+                else -> FragmentOne.newInstance()
             }
         }
     }
