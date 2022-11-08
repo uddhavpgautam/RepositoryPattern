@@ -52,10 +52,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
-
-    override fun onResume() {
-        super.onResume()
 
         viewPager = findViewById(R.id.pager)
         viewPager.setPageTransformer(ZoomOutPageTransformer())
@@ -80,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         appBarLayout.addOnOffsetChangedListener { appBarLayout, i ->
             if (isCalculated.not()) {
                 avatarAnimateStartPointY =
-                    Math.abs((appBarLayout.height - (EXPAND_AVATAR_SIZE + horizontalToolbarAvatarMargin)) / appBarLayout.totalScrollRange)
+                    abs((appBarLayout.height - (EXPAND_AVATAR_SIZE + horizontalToolbarAvatarMargin)) / appBarLayout.totalScrollRange)
                 avatarCollapseAnimationChangeWeight = 1 / (1 - avatarAnimateStartPointY)
                 verticalToolbarAvatarMargin = (toolbar.height - COLLAPSE_IMAGE_SIZE) * 2
                 isCalculated = true

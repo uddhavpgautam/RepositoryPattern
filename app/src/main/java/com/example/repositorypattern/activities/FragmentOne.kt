@@ -1,12 +1,12 @@
 package com.example.repositorypattern.activities
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.R
@@ -17,6 +17,7 @@ import java.io.*
 
 class FragmentOne : Fragment() {
     private lateinit var tv: TextView
+    var attached = false
 
     companion object {
         @JvmStatic
@@ -60,38 +61,48 @@ class FragmentOne : Fragment() {
                 tv.text = it
             }*/
         }
-            super.onViewCreated(view, savedInstanceState)
+        super.onViewCreated(view, savedInstanceState)
         return view
     }
 
+    override fun onAttach(context: Context) {
+        attached = true
+        super.onAttach(context)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        TabLayoutMediator(requireActivity().findViewById(R.id.into_tab_layout), requireActivity().findViewById(R.id.pager))
-        { _, _ ->}.attach()
+        TabLayoutMediator(
+            requireActivity().findViewById(R.id.into_tab_layout),
+            requireActivity().findViewById(R.id.pager)
+        )
+        { _, _ -> }.attach()
         (requireActivity().findViewById(R.id.pager) as ViewPager2).apply {
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageScrollStateChanged(state: Int) {
-                    super.onPageScrollStateChanged(state)
-                }
-
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                }
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    view.post {
-                        val wMeasureSpec = View.MeasureSpec.makeMeasureSpec(view.width, View.MeasureSpec.EXACTLY)
-                        val hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-                        view.measure(wMeasureSpec, hMeasureSpec)
+                    if(!isAdded) return
+                    if (childFragmentManager.fragments.size > position) {
+                        val fragment = childFragmentManager.fragments[position]
+                        fragment.view?.let {
+                            it.post {
+                                val wMeasureSpec = View.MeasureSpec.makeMeasureSpec(
+                                    view.width,
+                                    View.MeasureSpec.EXACTLY
+                                )
+                                val hMeasureSpec = View.MeasureSpec.makeMeasureSpec(
+                                    0,
+                                    View.MeasureSpec.UNSPECIFIED
+                                )
+                                view.measure(wMeasureSpec, hMeasureSpec)
 
-                        if (this@apply.layoutParams.height != view.measuredHeight) {
-                            this@apply.layoutParams = (this@apply.layoutParams as LinearLayout.LayoutParams)
-                                .also {
-                                        lp -> lp.height = view.measuredHeight
+                                if (this@apply.layoutParams.height != view.measuredHeight) {
+                                    this@apply.layoutParams =
+                                        (this@apply.layoutParams as LinearLayout.LayoutParams)
+                                            .also { lp ->
+                                                lp.height = view.measuredHeight
+                                            }
                                 }
+                            }
                         }
                     }
                 }
