@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.adapter = pagerAdapter
 
-
         EXPAND_AVATAR_SIZE = resources.getDimension(R.dimen.default_expanded_image_size)
         COLLAPSE_IMAGE_SIZE = resources.getDimension(R.dimen.default_collapsed_image_size)
         horizontalToolbarAvatarMargin = resources.getDimension(R.dimen.activity_margin)
@@ -190,7 +189,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                in 1 until 52 -> CardFragment.create(Card.DECK[position])
+                in 1 until 53 -> CardFragment.create(Card.DECK[position-1])
                 else -> FragmentOne.newInstance()
             }
         }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.R
@@ -17,7 +18,6 @@ import java.io.*
 
 class FragmentOne : Fragment() {
     private lateinit var tv: TextView
-    var attached = false
 
     companion object {
         @JvmStatic
@@ -65,51 +65,13 @@ class FragmentOne : Fragment() {
         return view
     }
 
-    override fun onAttach(context: Context) {
-        attached = true
-        super.onAttach(context)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         TabLayoutMediator(
             requireActivity().findViewById(R.id.into_tab_layout),
             requireActivity().findViewById(R.id.pager)
         )
         { _, _ -> }.attach()
-        (requireActivity().findViewById(R.id.pager) as ViewPager2).apply {
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    if(!isAdded) return
-                    if (childFragmentManager.fragments.size > position) {
-                        val fragment = childFragmentManager.fragments[position]
-                        fragment.view?.let {
-                            it.post {
-                                val wMeasureSpec = View.MeasureSpec.makeMeasureSpec(
-                                    view.width,
-                                    View.MeasureSpec.EXACTLY
-                                )
-                                val hMeasureSpec = View.MeasureSpec.makeMeasureSpec(
-                                    0,
-                                    View.MeasureSpec.UNSPECIFIED
-                                )
-                                view.measure(wMeasureSpec, hMeasureSpec)
-
-                                if (this@apply.layoutParams.height != view.measuredHeight) {
-                                    this@apply.layoutParams =
-                                        (this@apply.layoutParams as LinearLayout.LayoutParams)
-                                            .also { lp ->
-                                                lp.height = view.measuredHeight
-                                            }
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-        }
-
-        super.onViewCreated(view, savedInstanceState)
     }
 
     private suspend fun String.useCoroutineToDownloadFile(): String? {
