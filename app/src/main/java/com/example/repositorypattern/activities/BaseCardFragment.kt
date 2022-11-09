@@ -11,8 +11,8 @@ open class BaseCardFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         TabLayoutMediator(
-            requireActivity().findViewById(R.id.into_tab_layout),
-            requireActivity().findViewById(R.id.pager)
+            requireActivity().findViewById(R.id.into_tab_layout_for_fragments),
+            requireActivity().findViewById(R.id.pager_for_fragments)
         )
         { _, _ -> }.attach()
     }

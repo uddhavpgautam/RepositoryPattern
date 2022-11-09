@@ -131,30 +131,67 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/pager"
+                    android:id="@+id/pager_for_fragments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                 </androidx.viewpager2.widget.ViewPager2>
 
                 <com.google.android.material.tabs.TabLayout
-                    android:background="@color/color_white"
-                    android:id="@+id/into_tab_layout"
+                    android:id="@+id/into_tab_layout_for_fragments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/color_white"
                     app:tabBackground="@drawable/tab_pager_selector"
                     app:tabGravity="center"
-                    app:tabPaddingStart="@dimen/tab_padding_start"
-                    app:tabPaddingEnd="@dimen/tab_padding_end"
                     app:tabIndicatorHeight="0dp"
-                    android:layout_gravity="bottom"
-                    />
+                    app:tabPaddingEnd="@dimen/tab_padding_end"
+                    app:tabPaddingStart="@dimen/tab_padding_start" />
 
                 <!-- <androidx.fragment.app.FragmentContainerView
                      android:id="@+id/fragment_one_container_view"
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content" />-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/pager_for_views"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/into_tab_layout_for_views"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/color_white"
+                    app:tabBackground="@drawable/tab_pager_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabPaddingEnd="@dimen/tab_padding_end"
+                    app:tabPaddingStart="@dimen/tab_padding_start" />
+
+                <!-- <androidx.fragment.app.FragmentContainerView
+                     android:id="@+id/fragment_one_container_view"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content" />-->
+
+            </LinearLayout>
 
         </LinearLayout>
 

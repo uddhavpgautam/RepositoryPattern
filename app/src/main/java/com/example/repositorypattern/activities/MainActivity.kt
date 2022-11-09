@@ -1,5 +1,6 @@
 package com.example.repositorypattern.activities
 
+import CardViewAdapter
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
@@ -9,12 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.R
-import com.example.repositorypattern.cards.Card
+import com.example.repositorypattern.adapters.ScreenSlidePagerAdapter
 import com.google.android.material.appbar.AppBarLayout
 import kotlin.math.abs
 
@@ -29,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         const val SWITCHED = 1
     }
 
-    private lateinit var viewPager: ViewPager2
+    private lateinit var viewPagerForFragments: ViewPager2
+    private lateinit var viewPagerForViews: ViewPager2
+
 
     private lateinit var ivUserAvatar: ImageView
     private var EXPAND_AVATAR_SIZE: Float = 0F
@@ -53,13 +53,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewPager = findViewById(R.id.pager)
-        viewPager.setPageTransformer(ZoomOutPageTransformer())
-        val pagerAdapter = ScreenSlidePagerAdapter(this)
-        viewPager.adapter = pagerAdapter
+        viewPagerForFragments = findViewById(R.id.pager_for_fragments)
+        viewPagerForFragments.setPageTransformer(ZoomOutPageTransformer())
+        val screenSlidePagerAdapter = ScreenSlidePagerAdapter(this)
+        viewPagerForFragments.adapter = screenSlidePagerAdapter
+
+        viewPagerForViews = findViewById(R.id.pager_for_views)
+        viewPagerForViews.setPageTransformer(ZoomOutPageTransformer())
+        val cardViewAdapter = CardViewAdapter()
+        viewPagerForViews.adapter = cardViewAdapter
 
         val viewPager2ViewHeightAnimator = ViewPager2ViewHeightAnimator()
-        viewPager2ViewHeightAnimator.viewPager2 = viewPager
+        viewPager2ViewHeightAnimator.viewPager2 = viewPagerForFragments
 
         EXPAND_AVATAR_SIZE = resources.getDimension(R.dimen.default_expanded_image_size)
         COLLAPSE_IMAGE_SIZE = resources.getDimension(R.dimen.default_collapsed_image_size)
@@ -180,20 +185,6 @@ class MainActivity : AppCompatActivity() {
                         translationX = 0f
                     }
                 }
-            }
-        }
-    }
-
-    private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
-
-        override fun getItemCount(): Int {
-            return Card.DECK.size + 1 //1 for FragmentOne
-        }
-
-        override fun createFragment(position: Int): Fragment {
-            return when (position) {
-                in 1 until 53 -> CardFragment.create(Card.DECK[position-1])
-                else -> FragmentOne.newInstance()
             }
         }
     }
