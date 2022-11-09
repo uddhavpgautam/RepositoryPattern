@@ -58,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         viewPager.adapter = pagerAdapter
 
+        val viewPager2ViewHeightAnimator = ViewPager2ViewHeightAnimator()
+        viewPager2ViewHeightAnimator.viewPager2 = viewPager
+
         EXPAND_AVATAR_SIZE = resources.getDimension(R.dimen.default_expanded_image_size)
         COLLAPSE_IMAGE_SIZE = resources.getDimension(R.dimen.default_collapsed_image_size)
         horizontalToolbarAvatarMargin = resources.getDimension(R.dimen.activity_margin)
