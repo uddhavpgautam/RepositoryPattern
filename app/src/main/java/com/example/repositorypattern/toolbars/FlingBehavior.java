@@ -1,4 +1,4 @@
-package com.example.repositorypattern.activities;
+package com.example.repositorypattern.toolbars;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,4 +1,4 @@
-package com.example.repositorypattern.toolbars
+package com.example.repositorypattern.toolbars.utils
 
 import android.util.TypedValue
 import android.view.View

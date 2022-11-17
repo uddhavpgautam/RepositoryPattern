@@ -5,7 +5,7 @@ import com.facebook.shimmer.BuildConfig
 import timber.log.Timber
 
 
-class MyApp : Application() {
+class RepositoryPatternApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

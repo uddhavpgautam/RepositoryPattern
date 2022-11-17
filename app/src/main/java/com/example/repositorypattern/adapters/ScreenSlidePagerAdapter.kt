@@ -3,9 +3,9 @@ package com.example.repositorypattern.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.repositorypattern.activities.CardFragment
-import com.example.repositorypattern.activities.FragmentOne
+import com.example.repositorypattern.cards.fragments.CardFragment
 import com.example.repositorypattern.cards.Card
+import com.example.repositorypattern.fragments.FragmentOne
 
 
 class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {

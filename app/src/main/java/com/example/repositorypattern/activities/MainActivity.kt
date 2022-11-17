@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.newsapp.R
 import com.example.repositorypattern.adapters.ScreenSlidePagerAdapter
-import com.example.repositorypattern.toolbars.CollapsingToolbar
+import com.example.repositorypattern.animators.ViewPager2ViewHeightAnimator
+import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
+import com.example.repositorypattern.transformers.ZoomOutPageTransformer
 
 //eval `ssh-agent -s`; ssh-add /Users/roshanidahal/.ssh/id_rsa; git push
 

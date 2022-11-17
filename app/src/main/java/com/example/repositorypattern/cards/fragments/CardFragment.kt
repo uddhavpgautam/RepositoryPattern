@@ -1,4 +1,4 @@
-package com.example.repositorypattern.activities
+package com.example.repositorypattern.cards.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

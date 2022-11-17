@@ -1,4 +1,4 @@
-package com.example.repositorypattern.activities
+package com.example.repositorypattern.animators
 
 import android.view.View
 import android.view.ViewTreeObserver
