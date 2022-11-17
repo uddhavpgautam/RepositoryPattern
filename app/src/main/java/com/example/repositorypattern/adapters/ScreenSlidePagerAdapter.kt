@@ -7,6 +7,7 @@ import com.example.repositorypattern.activities.CardFragment
 import com.example.repositorypattern.activities.FragmentOne
 import com.example.repositorypattern.cards.Card
 
+
 class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
     override fun getItemCount(): Int {
@@ -15,8 +16,9 @@ class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            in 1 until 53 -> CardFragment.create(Card.DECK[position-1])
+            in 1 until 53 -> CardFragment.create(Card.DECK[position - 1])
             else -> FragmentOne.newInstance()
         }
     }
+
 }

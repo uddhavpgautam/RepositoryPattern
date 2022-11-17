@@ -131,15 +131,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/pager_for_fragments"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent">
 
                 </androidx.viewpager2.widget.ViewPager2>
 
@@ -149,28 +150,26 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:background="@color/color_white"
+                    android:contentDescription="tab_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/pager_for_fragments"
                     app:tabBackground="@drawable/tab_pager_selector"
                     app:tabGravity="center"
                     app:tabIndicatorHeight="0dp"
                     app:tabPaddingEnd="@dimen/tab_padding_end"
                     app:tabPaddingStart="@dimen/tab_padding_start" />
 
-                <!-- <androidx.fragment.app.FragmentContainerView
-                     android:id="@+id/fragment_one_container_view"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/pager_for_views"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent">
 
                 </androidx.viewpager2.widget.ViewPager2>
 
@@ -180,18 +179,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:background="@color/color_white"
+                    android:contentDescription="tab_layout"
+                    app:layout_constraintTop_toBottomOf="@+id/pager_for_views"
                     app:tabBackground="@drawable/tab_pager_selector"
                     app:tabGravity="center"
                     app:tabIndicatorHeight="0dp"
                     app:tabPaddingEnd="@dimen/tab_padding_end"
                     app:tabPaddingStart="@dimen/tab_padding_start" />
 
-                <!-- <androidx.fragment.app.FragmentContainerView
-                     android:id="@+id/fragment_one_container_view"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content" />-->
-
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

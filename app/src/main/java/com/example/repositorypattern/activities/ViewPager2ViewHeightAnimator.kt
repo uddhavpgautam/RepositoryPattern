@@ -8,18 +8,37 @@ import androidx.viewpager2.widget.ViewPager2
 
 class ViewPager2ViewHeightAnimator {
 
-    var viewPager2: ViewPager2? = null; set(value) {
-        if (field != value) {
-            field?.unregisterOnPageChangeCallback(onPageChangeCallback)
-            field = value
-            value?.registerOnPageChangeCallback(onPageChangeCallback)
+    //var property variable: Type = initialization: getters and setters
+    var viewPager2: ViewPager2? = null
+        get() {
+            return field
         }
-    }
+        set(value) {
+            //if different than previous set value by backing field
+            //initially field = null. field is implicit backing variable. Or you can use your own
+            //backing property variable, but this is more manual work.
 
+            //new viewpager came
+            if (field != value) {
+                //unregister pager change callback from old viewpager
+                field?.unregisterOnPageChangeCallback(onPageChangeCallback)
+                //back new viewpager to the backing field
+                field = value
+                //register page change callback to new just passed viewpager
+                value?.registerOnPageChangeCallback(onPageChangeCallback)
+            }
+        }
+
+    //viewpager2 always uses RecyclerView as it's first and only child
+    //LinearLayoutManager extends RecyclerView.LayoutManager
     private val layoutManager: LinearLayoutManager? get() = (viewPager2?.getChildAt(0) as? RecyclerView)?.layoutManager as? LinearLayoutManager
 
     private val onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
             super.onPageScrolled(position, positionOffset, positionOffsetPixels)
             recalculate(position, positionOffset)
         }

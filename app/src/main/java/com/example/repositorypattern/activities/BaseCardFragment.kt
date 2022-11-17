@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.newsapp.R
 import com.google.android.material.tabs.TabLayoutMediator
 
-open class BaseCardFragment: Fragment() {
+open class BaseCardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

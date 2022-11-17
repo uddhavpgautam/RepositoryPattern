@@ -1,8 +1,6 @@
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.repositorypattern.activities.CardFragment
-import com.example.repositorypattern.activities.FragmentOne
 import com.example.repositorypattern.cards.Card
 import com.example.repositorypattern.cards.CardView
 

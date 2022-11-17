@@ -57,7 +57,7 @@ class FragmentOne : Fragment() {
                 tv.text = it
             }*/
         }
-        super.onViewCreated(view, savedInstanceState)
+        super.onCreateView(inflater, container, savedInstanceState)
         return view
     }
 
