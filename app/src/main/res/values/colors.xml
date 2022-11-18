@@ -392,4 +392,9 @@
     <color name="teal_200">#03DAC5</color>
     <color name="teal_300">#4DB6AC</color>
 
+
+    <!--    dark mode, light mode-->
+    <color name="fragment_one_background">#ffffff</color>
+    <color name="fragment_one_text_color">#000000</color>
+
 </resources>
