@@ -126,70 +126,10 @@
         android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/viewpager2_hosting_fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/pager_for_fragments"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </androidx.viewpager2.widget.ViewPager2>
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/into_tab_layout_for_fragments"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/color_white"
-                    android:contentDescription="tab_layout"
-                    app:layout_constraintTop_toBottomOf="@+id/pager_for_fragments"
-                    app:tabBackground="@drawable/tab_pager_selector"
-                    app:tabGravity="center"
-                    app:tabIndicatorHeight="0dp"
-                    app:tabPaddingEnd="@dimen/tab_padding_end"
-                    app:tabPaddingStart="@dimen/tab_padding_start" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/pager_for_views"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                </androidx.viewpager2.widget.ViewPager2>
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/into_tab_layout_for_views"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:background="@color/color_white"
-                    android:contentDescription="tab_layout"
-                    app:layout_constraintTop_toBottomOf="@+id/pager_for_views"
-                    app:tabBackground="@drawable/tab_pager_selector"
-                    app:tabGravity="center"
-                    app:tabIndicatorHeight="0dp"
-                    app:tabPaddingEnd="@dimen/tab_padding_end"
-                    app:tabPaddingStart="@dimen/tab_padding_start" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
 
     </androidx.core.widget.NestedScrollView>
 
