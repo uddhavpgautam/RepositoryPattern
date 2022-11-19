@@ -129,7 +129,7 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/viewpager2_hosting_fragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </androidx.core.widget.NestedScrollView>
 

@@ -16,6 +16,7 @@ import kotlin.math.abs
 class CollapsingToolbar(mainActivity: MainActivity?) {
 
     lateinit var activity: AppCompatActivity
+
     init {
         mainActivity?.let {
             this.activity = mainActivity

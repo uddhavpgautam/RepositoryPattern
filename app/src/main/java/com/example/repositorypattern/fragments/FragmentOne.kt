@@ -10,8 +10,6 @@ import com.example.newsapp.R
 import com.example.repositorypattern.utils.MyFileUtils
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.*
-import org.apache.commons.io.FilenameUtils
-import java.io.*
 
 class FragmentOne : Fragment() {
     private lateinit var tv: TextView

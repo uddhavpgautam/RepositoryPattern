@@ -70,6 +70,7 @@ open class MyFileUtils {
                     }
                 }
                 HigherOrderFunctionNeed.higherOrderFunctionEg1
+
                 return writer.toString()
             } catch (e: java.lang.Exception) {
                 //guarantees all type of Exceptions
@@ -94,28 +95,30 @@ open class MyFileUtils {
                 }
 
                 val removeExt3: (String) -> String?
-                    get() = {
-                            it: String -> it.removeExtension()
+                    get() = { it: String ->
+                        it.removeExtension()
                     }
 
-                val removeExt2: (String) -> String? = { fileName: String -> fileName.removeExtension() }
+                val removeExt2: (String) -> String? =
+                    { fileName: String -> fileName.removeExtension() }
             }
 
         }
 
         class HigherOrderFunctionNeed {
+
             companion object {
 
                 private val fruits: Array<String> = arrayOf("Banana", "Apple", "Pear")
                 private val marks: Array<Int> = arrayOf(15, 12, 6, 19, 7, 9)
 
-                private val longFruits = fruits.filter { it.length > 4 }
-                private val highMarks = marks.filter { it > 10 }
+                private val longFruits: List<String> = fruits.filter { it.length > 4 }
+                private val highMarks: List<Int> = marks.filter { it > 10 }
 
-                private fun <T: Any> getBigValues(clazz: KClass<T>): List<T>? {
-                    return when(clazz) {
+                private fun <T : Any> getBigValues(clazz: KClass<T>): List<T>? {
+                    return when (clazz) {
                         Integer::class -> longFruits as List<T>
-                        String::class -> highMarks  as List<T>
+                        String::class -> highMarks as List<T>
                         else -> null
                     }
                 }
