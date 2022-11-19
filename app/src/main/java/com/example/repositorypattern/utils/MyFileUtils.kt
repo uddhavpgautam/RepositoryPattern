@@ -1,8 +1,10 @@
 package com.example.repositorypattern.utils
 
 import android.content.Context
+import com.example.repositorypattern.utils.MyFileUtils.Companion.FileNameRemoveExtension.Companion.removeExtension
 import org.apache.commons.io.FilenameUtils
 import java.io.*
+import kotlin.reflect.KClass
 
 open class MyFileUtils {
 
@@ -67,11 +69,14 @@ open class MyFileUtils {
                         writer.write(buffer, 0, n)
                     }
                 }
+                HigherOrderFunctionNeed.higherOrderFunctionEg1
                 return writer.toString()
             } catch (e: java.lang.Exception) {
                 //guarantees all type of Exceptions
                 return null
             }
+
+
         }
 
         //wrap remove file extensions different ways into a separate class
@@ -94,8 +99,36 @@ open class MyFileUtils {
                     }
 
                 val removeExt2: (String) -> String? = { fileName: String -> fileName.removeExtension() }
+            }
+
+        }
+
+        class HigherOrderFunctionNeed {
+            companion object {
+
+                private val fruits: Array<String> = arrayOf("Banana", "Apple", "Pear")
+                private val marks: Array<Int> = arrayOf(15, 12, 6, 19, 7, 9)
+
+                private val longFruits = fruits.filter { it.length > 4 }
+                private val highMarks = marks.filter { it > 10 }
+
+                private fun <T: Any> getBigValues(clazz: KClass<T>): List<T>? {
+                    return when(clazz) {
+                        Integer::class -> longFruits as List<T>
+                        String::class -> highMarks  as List<T>
+                        else -> null
+                    }
+                }
+
+                private val types = listOf(Integer::class, String::class)
+
+                val higherOrderFunctionEg1 = types.forEach { type ->
+                    val data = getBigValues(type)
+                    println(data)
+                }
 
             }
+
         }
 
     }
