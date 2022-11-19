@@ -1,7 +1,6 @@
 package com.example.repositorypattern.utils
 
 import android.content.Context
-import com.example.repositorypattern.utils.MyFileUtils.Companion.removeExtension
 import org.apache.commons.io.FilenameUtils
 import java.io.*
 
@@ -49,9 +48,7 @@ open class MyFileUtils {
                 )*/
                 val inputStream: InputStream = context.resources.openRawResource(
                     context.resources.getIdentifier(
-                        /*rmvExt(fileName),*/
-                        /*fileName.removeExtension(),*/
-                        removeExt(fileName),
+                        FileNameRemoveExtension.removeExt2(fileName),
                         "raw",
                         context.packageName
                     )
@@ -77,20 +74,29 @@ open class MyFileUtils {
             }
         }
 
-        private val rmvExt: (String) -> String = {
-            FilenameUtils.removeExtension(it)
-        }
+        //wrap remove file extensions different ways into a separate class
+        class FileNameRemoveExtension {
 
-        private fun String.removeExtension(): String? {
-            //this@removeExtension holds the string value
-            return FilenameUtils.removeExtension(this@removeExtension)
-        }
+            companion object {
 
-        private val removeExt: (String) -> String?
-            get() = {
-                it: String -> it.removeExtension()
+                private fun String.removeExtension(): String? {
+                    //this@removeExtension holds the string value
+                    return FilenameUtils.removeExtension(this@removeExtension)
+                }
+
+                val removeExt1: (String) -> String = {
+                    FilenameUtils.removeExtension(it)
+                }
+
+                val removeExt3: (String) -> String?
+                    get() = {
+                            it: String -> it.removeExtension()
+                    }
+
+                val removeExt2: (String) -> String? = { fileName: String -> fileName.removeExtension() }
+
             }
-
+        }
 
     }
 
