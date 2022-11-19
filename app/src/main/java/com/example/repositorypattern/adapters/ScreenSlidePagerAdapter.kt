@@ -11,7 +11,7 @@ import com.example.repositorypattern.fragments.FragmentOne
 class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
     override fun getItemCount(): Int {
-        return Card.DECK.size + 1 //1 for FragmentOne
+        return Card.DECK.size + 1 //1 for FragmentOne.kt
     }
 
     override fun createFragment(position: Int): Fragment {
