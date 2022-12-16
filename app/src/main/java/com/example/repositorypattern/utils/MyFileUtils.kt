@@ -1,7 +1,6 @@
 package com.example.repositorypattern.utils
 
 import android.content.Context
-import com.example.repositorypattern.utils.MyFileUtils.Companion.FileNameRemoveExtension.Companion.removeExtension
 import org.apache.commons.io.FilenameUtils
 import java.io.*
 import kotlin.reflect.KClass
