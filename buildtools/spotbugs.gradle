@@ -1,0 +1,34 @@
+apply from: "$project.rootDir/variants.gradle"
+apply plugin: "com.github.spotbugs"
+
+project.tasks.withType(SpotBugsTask) {
+    group 'Verification'
+    description 'Run Spotbugs on this project.'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+//define a closure called spotbugs
+spotbugs {
+    effort = 'max'
+    reportLevel = 'high'
+}
+
+project.plugins.whenPluginAdded { newPlugin ->
+    switch (newPlugin.class.name) {
+        case 'com.android.build.gradle.LibraryPlugin':
+            createFlavorTypeVariants { type, flavor ->
+                project.rootProject.tasks.findByName("spotbugs${flavor.capitalize()}${type.capitalize()}").dependsOn(":${project.path}:spotbugs${type.capitalize()}")
+            }
+            break
+        case 'com.android.build.gradle.AppPlugin':
+            createFlavorTypeVariants { type, flavor ->
+                def flavorType = "$flavor${type.capitalize()}"
+                project.rootProject.tasks.findByName("spotbugs${flavorType.capitalize()}").dependsOn(":${project.path}:spotbugs${flavorType.capitalize()}")
+            }
+            break
+    }
+}

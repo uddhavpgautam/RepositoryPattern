@@ -7,6 +7,7 @@ plugins {
 android {
 
     defaultConfig {
+        manifestPlaceholders = [hostName:"repositorypattern.example.com"]
         multiDexEnabled true
         applicationId "com.example.repositorypattern"
         minSdk 21
@@ -21,16 +22,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     buildTypes {
         debug {
+            applicationIdSuffix ".debug"
             minifyEnabled false
             shrinkResources false
             debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         release {
@@ -39,16 +40,54 @@ android {
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        staging {
+            initWith debug
+            manifestPlaceholders = [hostName:"internal.repositorypattern.example.com"]
+            applicationIdSuffix ".debugStaging"
+        }
+    }
+
+    flavorDimensions "api", "mode" //highest priority to lowest priority
+    productFlavors {
+        demo {
+            dimension "mode" //combine demo and full using dimension
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full {
+            dimension "mode" //combine demo and full using dimension
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
+
+        minApi24 {
+            dimension "api"
+            minSdkVersion 24
+            versionCode 30000 + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi24"
+        }
+
+        minApi23 {
+            dimension "api"
+            minSdkVersion 23
+            versionCode 20000  + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi23"
+        }
+
+        minApi21 {
+            dimension "api"
+            minSdkVersion 21
+            versionCode 10000  + android.defaultConfig.versionCode
+            versionNameSuffix "-minApi21"
+        }
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11
     }
 
-    namespace 'com.example.newsapp'
-    compileSdk 33
-    buildToolsVersion '32.0.0'
-    ndkVersion '24.0.8215888'
+    namespace 'com.example.repositorypattern'
 }
 
 dependencies {

@@ -2,7 +2,7 @@ package com.example.repositorypattern.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.newsapp.R
+import com.example.repositorypattern.R
 import com.example.repositorypattern.fragments.ViewPager2HostingFragment
 import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
 

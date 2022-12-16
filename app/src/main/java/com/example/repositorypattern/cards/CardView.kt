@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import androidx.annotation.ColorRes
-import com.example.newsapp.R
+import com.example.repositorypattern.R
 
 
 /** Inflates and populates a [View] representing a [Card]  */

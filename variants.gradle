@@ -1,0 +1,21 @@
+def buildTypes = ['debug', 'release', 'staging']
+def buildFlavors = ['demo', 'full', 'minApi24', 'minApi23', 'minApi21']
+
+ext {
+    //closure is a backing field for this function
+    createFlavorTypeVariants = { closure ->
+        buildTypes.each { type ->
+            buildFlavors.each { flavor ->
+                //this function has two variables. see the implementation in build.gradle file
+                closure(type, flavor)
+                new File('spotBugsLogs.txt').append("type:${type} flavor:${flavor}\n")
+            }
+        }
+    }
+
+    createTypeOnlyVariants = { closure ->
+        buildTypes.each { type ->
+            closure(type, buildFlavors)
+        }
+    }
+}

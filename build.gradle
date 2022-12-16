@@ -1,16 +1,3 @@
-apply plugin: 'checkstyle'
-task checkstyle(type: Checkstyle) {
-    description 'Check code standard'
-    group 'verification'
-    configFile file('${project.rootDir}/../../config/checkstyle/checkstyle.xml')
-    source 'src'
-    include '**/*.kt'
-    exclude '**/gen/**'
-    classpath = files()
-    ignoreFailures = false
-}
-
-
 buildscript {
     ext {
         room_version = '2.4.3'
@@ -19,12 +6,49 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
+        classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.3"
     }
+}
+
+//this gets called first
+apply from: "$project.rootDir/variants.gradle"
+
+//implementation of the function
+createFlavorTypeVariants { type, flavor ->
+    def flavorType = "$flavor${type.capitalize()}"
+    task "spotbugs${flavorType.capitalize()}"(type: DefaultTask) {
+        group 'Verification'
+        description "Run Spotbugs on the whole project."
+    }
+}
+
+//project being a global variable, you can excess ext itself
+//to define project's extra properties
+project.ext {
+    //com.github.spotbugs.snom.SpotBugsTask value is defined in SpotBugs's classpath in dependency
+    SpotBugsTask = com.github.spotbugs.snom.SpotBugsTask
+}
+
+subprojects {
+    apply from: "${rootDir}/buildtools/spotbugs.gradle"
+}
+
+apply plugin: 'checkstyle'
+task checkstyle(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle.xml')
+    source 'src'
+    include '**/*.kt'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
 }
 
 task clean(type: Delete) {

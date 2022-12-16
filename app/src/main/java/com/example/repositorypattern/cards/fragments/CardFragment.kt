@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.newsapp.R
+import com.example.repositorypattern.R
 import com.example.repositorypattern.cards.Card
 import com.example.repositorypattern.cards.CardView
 import com.google.android.material.tabs.TabLayoutMediator

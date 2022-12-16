@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.example.newsapp.R
+import com.example.repositorypattern.R
 import com.example.repositorypattern.activities.MainActivity
 import com.google.android.material.appbar.AppBarLayout
 import kotlin.math.abs

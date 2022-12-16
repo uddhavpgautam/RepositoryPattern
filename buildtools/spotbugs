@@ -1,0 +1,86 @@
+/*
+[build flavors][buildTypes]
+[api][mode][buildTypes] //api has priority greater than mode
+Build variant: [minApi24, minApi23, minApi21][Demo, Full][Debug, Release, Staging]
+Corresponding APK: app-[minApi24, minApi23, minApi21]-[demo, full]-[debug, release, staging].apk
+For example,
+    Build variant: minApi24DemoDebug
+    Corresponding APK: app-minApi24-demo-debug.apk
+
+
+You can check this in Active Build Variant
+
+ */
+
+roshanidahal@Roshanis-MacBook-Pro RepositoryPattern % ./gradlew -q :tasks --all | grep 'tasks\|spotbug\|-------------'
+------------------------------------------------------------
+------------------------------------------------------------
+Android tasks
+-------------
+Build tasks
+Build Setup tasks
+-----------------
+Help tasks
+tasks - Displays the tasks runnable from root project 'RepositoryPattern' (some of the displayed tasks may belong to subprojects).
+app:tasks - Displays the tasks runnable from project ':app'.
+Install tasks
+-------------
+Verification tasks
+------------------
+spotbugsDemoDebug - Run Spotbugs on the whole project.
+spotbugsDemoRelease - Run Spotbugs on the whole project.
+spotbugsDemoStaging - Run Spotbugs on the whole project.
+spotbugsFullDebug - Run Spotbugs on the whole project.
+spotbugsFullRelease - Run Spotbugs on the whole project.
+spotbugsFullStaging - Run Spotbugs on the whole project.
+spotbugsMinApi21Debug - Run Spotbugs on the whole project.
+app:spotbugsMinApi21DemoDebug - Run Spotbugs on this project.
+app:spotbugsMinApi21DemoRelease - Run Spotbugs on this project.
+app:spotbugsMinApi21DemoStaging - Run Spotbugs on this project.
+app:spotbugsMinApi21FullDebug - Run Spotbugs on this project.
+app:spotbugsMinApi21FullRelease - Run Spotbugs on this project.
+app:spotbugsMinApi21FullStaging - Run Spotbugs on this project.
+spotbugsMinApi21Release - Run Spotbugs on the whole project.
+spotbugsMinApi21Staging - Run Spotbugs on the whole project.
+spotbugsMinApi23Debug - Run Spotbugs on the whole project.
+app:spotbugsMinApi23DemoDebug - Run Spotbugs on this project.
+app:spotbugsMinApi23DemoRelease - Run Spotbugs on this project.
+app:spotbugsMinApi23DemoStaging - Run Spotbugs on this project.
+app:spotbugsMinApi23FullDebug - Run Spotbugs on this project.
+app:spotbugsMinApi23FullRelease - Run Spotbugs on this project.
+app:spotbugsMinApi23FullStaging - Run Spotbugs on this project.
+spotbugsMinApi23Release - Run Spotbugs on the whole project.
+spotbugsMinApi23Staging - Run Spotbugs on the whole project.
+spotbugsMinApi24Debug - Run Spotbugs on the whole project.
+app:spotbugsMinApi24DemoDebug - Run Spotbugs on this project.
+app:spotbugsMinApi24DemoRelease - Run Spotbugs on this project.
+app:spotbugsMinApi24DemoStaging - Run Spotbugs on this project.
+app:spotbugsMinApi24FullDebug - Run Spotbugs on this project.
+app:spotbugsMinApi24FullRelease - Run Spotbugs on this project.
+app:spotbugsMinApi24FullStaging - Run Spotbugs on this project.
+spotbugsMinApi24Release - Run Spotbugs on the whole project.
+spotbugsMinApi24Staging - Run Spotbugs on the whole project.
+Other tasks
+
+
+The best part of this technique for applying the Spotbugs Plugin, is that it is future proof for your
+ project. Notice how we never touched ./app/build.gradle or ./your_module/build.gradle,
+ that means that anytime we add a new module to our project, it will automatically have Spotbugs
+ running on it! That makes it so much easier to stay on top of these types of tools, because the
+ risk of discovering that these types of tools weren't running on some section of the codebase for
+ various reasons and now there are +600 issues that they flagged and no time to fix them...
+ not like I'm speaking from experience.
+
+
+ ./gradlew check; ./gradlew clean build --stacktrace
+
+ or you can run on single module
+ ./gradlew app:spotbugsMinApi21DemoDebug
+or simply,
+./gradlew spotbugsMinApi21DemoDebug
+
+./gradlew spotbugsDemoDebug //doesn't run why?. Ans: you can remove api flavorDimension and it runs
+
+//spotBugs[One of the active variant]
+
+//we can't run spotbugsDemoDebug becuse it is not active build variant

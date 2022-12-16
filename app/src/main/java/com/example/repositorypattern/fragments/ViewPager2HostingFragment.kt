@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.newsapp.R
+import com.example.repositorypattern.R
 import com.example.repositorypattern.adapters.ScreenSlidePagerAdapter
 import com.example.repositorypattern.animators.ViewPager2ViewHeightAnimator
 import com.example.repositorypattern.transformers.ZoomOutPageTransformer

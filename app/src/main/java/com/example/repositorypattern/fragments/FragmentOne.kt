@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.newsapp.R
+import com.example.repositorypattern.R
 import com.example.repositorypattern.utils.MyFileUtils
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.*
