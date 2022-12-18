@@ -3,6 +3,7 @@ package com.example.repositorypattern.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.repositorypattern.R
+import com.example.repositorypattern.*
 import com.example.repositorypattern.fragments.ViewPager2HostingFragment
 import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
 
@@ -10,9 +11,7 @@ import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
 
 //never ever go with Inheritance BaseActivity approach. Things will get messy soon for BaseActivity
 //when you have to add other logic and callbacks and you get even hard when you want to migrate
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity : AppCompatActivity(R.layout.activity_main) { override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val collapsingToolbar = CollapsingToolbar(this)

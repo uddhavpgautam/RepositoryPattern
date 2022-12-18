@@ -36,20 +36,12 @@ project.ext {
 }
 
 subprojects {
-    apply from: "${rootDir}/buildtools/spotbugs.gradle"
+    apply from: "${rootDir}/config/spotbugs/spotbugs.gradle"
+    apply from: "${rootDir}/config/checkstyle/checkstyle.gradle"
+    apply from: "${rootDir}/config/pmd/pmd.gradle"
 }
 
-apply plugin: 'checkstyle'
-task checkstyle(type: Checkstyle) {
-    description 'Check code standard'
-    group 'verification'
-    configFile file('${rootDir}/config/checkstyle/checkstyle.xml')
-    source 'src'
-    include '**/*.kt'
-    exclude '**/gen/**'
-    classpath = files()
-    ignoreFailures = false
-}
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

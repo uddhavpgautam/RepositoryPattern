@@ -1,0 +1,84 @@
+apply plugin: 'checkstyle'
+task checkstyle(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
+
+task checkstyle_google(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/google-checkstyle.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
+
+task checkstyle_checks(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle_checks.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
+
+task checkstyle_input_checks(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle_input_checks.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
+
+task checkstyle_non_main_files_checks(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle_non_main_files_checks.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
+
+task checkstyle_resource_checks(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle_resources_checks.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
+
+task checkstyle_sevntu_checks(type: Checkstyle) {
+    description 'Check code standard'
+    group 'verification'
+    configFile file('${rootDir}/config/checkstyle/checkstyle_sevntu_checks.xml')
+    source 'src'
+    include '**/*.kt'
+    include '**/*.java'
+    exclude '**/gen/**'
+    classpath = files()
+    ignoreFailures = false
+}
