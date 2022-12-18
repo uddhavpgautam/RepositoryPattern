@@ -8,7 +8,8 @@ ext {
             buildFlavors.each { flavor ->
                 //this function has two variables. see the implementation in build.gradle file
                 closure(type, flavor)
-                new File('spotBugsLogs.txt').append("type:${type} flavor:${flavor}\n")
+                def buildtoolsDir = "${rootDir}/buildtools"
+                new File("${buildtoolsDir}/spotBugsLogs.txt").append("type: $type  flavor:$flavor\n")
             }
         }
     }
