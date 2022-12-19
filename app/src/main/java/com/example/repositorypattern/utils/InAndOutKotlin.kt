@@ -1,6 +1,6 @@
 package com.example.repositorypattern.utils
 
-class DoubleSource<out T: Number>: Source<Double> {
+class DoubleSource<out T : Number> : Source<Double> {
     override fun nextT(): Double {
         return 5.0
     }
@@ -12,7 +12,7 @@ class DoubleSource<out T: Number>: Source<Double> {
 
 }
 
-class IntSource: Source<Int> {
+class IntSource : Source<Int> {
     override fun nextT(): Int {
         return 5
     }
@@ -24,9 +24,9 @@ interface Source<out T> {
 }
 
 //what it can actually compare when implemented
-class NumberComparable: Comparable<Number> {
+class NumberComparable : Comparable<Number> {
     override fun compareTo(other: Number): Int {
-        return when(other) {
+        return when (other) {
             is Int -> other.compareTo(1)
             is Double -> other.compareTo(1.0)
             is Long -> other.compareTo(1L)
@@ -56,7 +56,8 @@ fun main() {
 
     //Any but Any is not like Object for Java although it is like Object
     //because of out variable Any is bound to be a type of Number
-    val anySource: Source<Any> = DoubleSource<Number>() //safely create child class instance from parent class
+    val anySource: Source<Any> =
+        DoubleSource<Number>() //safely create child class instance from parent class
     val intSource: Source<Any> = IntSource() //safely create child class instance from parent class
 
     anySource.nextT()

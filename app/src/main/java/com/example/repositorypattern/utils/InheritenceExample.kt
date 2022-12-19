@@ -32,8 +32,8 @@ class ChildClass2 : ParentInterface2() {
 }
 
 fun main() {
-    val childClass1:ParentInterface1 = ChildClass1()
-    val childClass2:ParentInterface2 = ChildClass2()
+    val childClass1: ParentInterface1 = ChildClass1()
+    val childClass2: ParentInterface2 = ChildClass2()
 
     //although we created from Parent Type, when created the instance constructed from Child Class template
     //that is why we only could call pubVal1 and pubVal2 only, not the private privVal1 from Parent

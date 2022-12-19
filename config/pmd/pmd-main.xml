@@ -1,39 +1,34 @@
 <?xml version="1.0"?>
-<ruleset name="PMD ruleset for Checkstyle"
-    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PMD ruleset for Checkstyle"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
                              http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <description>
         PMD ruleset for Checkstyle main code
     </description>
     <exclude-pattern>.*/src/it/.*</exclude-pattern>
     <exclude-pattern>.*/src/test/.*</exclude-pattern>
-    <rule ref="config/pmd.xml"/>
+    <rule ref="config/pmd.xml" />
 
     <rule ref="category/java/design.xml/ImmutableField">
         <properties>
             <!-- Fields with these annotations will have their value injected by picocli.
                  These fields should not be marked final. -->
-            <property name="ignoredAnnotations"
-                value="picocli.CommandLine$Option
-                     |picocli.CommandLine$Parameters"/>
+            <property name="ignoredAnnotations" value="picocli.CommandLine$Option
+                     |picocli.CommandLine$Parameters" />
             <!-- final modifier prevent us from reaching full test coverage,
                    we value full coverage more than final modifier. -->
-            <property name="violationSuppressXPath"
-                value="//ClassOrInterfaceDeclaration[@SimpleName='FileText']
-                        //FieldDeclaration//VariableDeclarator[@Name='fullText']"/>
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@SimpleName='FileText']
+                        //FieldDeclaration//VariableDeclarator[@Name='fullText']" />
         </properties>
     </rule>
     <rule ref="category/java/errorprone.xml/CloseResource">
         <properties>
             <property name="allowedResourceTypes"
-                value="java.io.ByteArrayOutputStream|java.io.ByteArrayInputStream"/>
+                value="java.io.ByteArrayOutputStream|java.io.ByteArrayInputStream" />
             <property name="allowedResourceTypes"
-                value="java.io.StringWriter|java.io.CharArrayWriter|java.io.StringReader"/>
+                value="java.io.StringWriter|java.io.CharArrayWriter|java.io.StringReader" />
             <!-- we do close streams in special methods -->
-            <property name="violationSuppressXPath"
-                value="//ClassOrInterfaceDeclaration[@SimpleName='DefaultLogger']
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@SimpleName='DefaultLogger']
                     | //ClassOrInterfaceDeclaration[@SimpleName='Main']
                         //MethodDeclaration[@Name='createListener']
                     | //ClassOrInterfaceDeclaration[@SimpleName='PropertyCacheFile']
@@ -43,15 +38,14 @@
                     | //ClassOrInterfaceDeclaration[@SimpleName='CheckstyleAntTask']
                         //MethodDeclaration[@Name='getListeners' or @Name='createDefaultLogger']
                     | //ClassOrInterfaceDeclaration[@SimpleName='AbstractNode']
-                        //MethodDeclaration[@Name='iterateAxis']"/>
+                        //MethodDeclaration[@Name='iterateAxis']" />
         </properties>
     </rule>
     <rule ref="category/java/design.xml/ExcessiveMethodLength">
         <properties>
             <!-- unfortunate cases -->
-            <property name="violationSuppressXPath"
-                value="//ClassOrInterfaceDeclaration[@SimpleName='PackageObjectFactory']
-                        //MethodDeclaration[@Name='fillChecksFromCodingPackage']"/>
+            <property name="violationSuppressXPath" value="//ClassOrInterfaceDeclaration[@SimpleName='PackageObjectFactory']
+                        //MethodDeclaration[@Name='fillChecksFromCodingPackage']" />
         </properties>
     </rule>
 </ruleset>

@@ -8,165 +8,157 @@
 
     <!-- Input files for NewlineAtEndOfFileCheckTest, intentional no new line at the end. -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]InputNewlineAtEndOfFile.*\.(java|txt)"/>
+        files="[\\/]test[\\/].*[\\/]InputNewlineAtEndOfFile.*\.(java|txt)" />
 
     <!-- Intentional no new line at the end. -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]grammar[\\/]comments[\\/]InputFullOfSinglelineComments\.java"/>
+        files="[\\/]test[\\/].*[\\/]grammar[\\/]comments[\\/]InputFullOfSinglelineComments\.java" />
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]asttreestringprinter[\\/]InputAstTreeStringPrinterFullOfSinglelineComments\.java"/>
+        files="[\\/]test[\\/].*[\\/]asttreestringprinter[\\/]InputAstTreeStringPrinterFullOfSinglelineComments\.java" />
     <suppress checks="NewlineAtEndOfFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]InputNoCodeInFile6\.java"/>
+        files="src[\\/]test[\\/]resources[\\/].*[\\/]InputNoCodeInFile6\.java" />
     <suppress checks="NewlineAtEndOfFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]InputAntlr4AstRegressionCassandraInputWithComments\.java"/>
+        files="src[\\/]test[\\/]resources[\\/].*[\\/]InputAntlr4AstRegressionCassandraInputWithComments\.java" />
 
     <!-- Grammar specific input file, should have exact structure to reproduce the case. -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]grammar[\\/]InputEmbeddedNullChar\.java"/>
+        files="[\\/]test[\\/].*[\\/]grammar[\\/]InputEmbeddedNullChar\.java" />
 
     <!-- Javadoc files should not have new line by design (on purpose). -->
-    <suppress checks="NewlineAtEndOfFile" files="[\\/]test[\\/].*\.javadoc"/>
+    <suppress checks="NewlineAtEndOfFile" files="[\\/]test[\\/].*\.javadoc" />
 
     <!-- Empty file cannot have any new line at the end. -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]checks[\\/]newlineatendoffile[\\/]InputNewlineAtEndOfFileEmptyFile\.txt"/>
+        files="[\\/]test[\\/].*[\\/]checks[\\/]newlineatendoffile[\\/]InputNewlineAtEndOfFileEmptyFile\.txt" />
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]grammar[\\/]InputRegressionEmptyAst\.txt"/>
+        files="[\\/]test[\\/].*[\\/]grammar[\\/]InputRegressionEmptyAst\.txt" />
 
     <!-- File with CR line separators used for testing -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]asttreestringprinter[\\/]InputAstTreeStringPrinterFullOfBlockCommentsCR\.java"/>
+        files="[\\/]test[\\/].*[\\/]asttreestringprinter[\\/]InputAstTreeStringPrinterFullOfBlockCommentsCR\.java" />
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]grammar[\\/]InputAstRegressionNewlineCrAtEndOfFile\.java"/>
+        files="[\\/]test[\\/].*[\\/]grammar[\\/]InputAstRegressionNewlineCrAtEndOfFile\.java" />
 
     <!-- File with LF line separators used for testing -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]checks[\\/]blocks[\\/]emptycatchblock[\\/]InputEmptyCatchBlockDefaultLF\.java"/>
+        files="[\\/]test[\\/].*[\\/]checks[\\/]blocks[\\/]emptycatchblock[\\/]InputEmptyCatchBlockDefaultLF\.java" />
 
     <!-- For the testing purposes -->
     <suppress checks="NewlineAtEndOfFile"
-        files="[\\/]test[\\/].*[\\/]checks[\\/]uniqueproperties[\\/]InputUniquePropertiesWithDuplicates\.properties"/>
+        files="[\\/]test[\\/].*[\\/]checks[\\/]uniqueproperties[\\/]InputUniquePropertiesWithDuplicates\.properties" />
 
     <!-- ArchUnit store is automatically updated by ArchUnit which
          does not add new line at the end. -->
     <suppress checks="NewlineAtEndOfFile"
-        files="config[\\/]archunit-store[\\/]slices_should_be_free_of_cycles_suppressions"/>
+        files="config[\\/]archunit-store[\\/]slices_should_be_free_of_cycles_suppressions" />
 
     <!-- till https://issues.apache.org/jira/browse/MRELEASE-1008 -->
-    <suppress id="lineLength" files="pom.xml"/>
+    <suppress files="pom.xml" id="lineLength" />
     <!-- this file cannot be line wraped -->
-    <suppress id="lineLength" files="config[\\/]signatures.txt"/>
-    <suppress id="lineLength" files="config[\\/]signatures-test.txt"/>
+    <suppress files="config[\\/]signatures.txt" id="lineLength" />
+    <suppress files="config[\\/]signatures-test.txt" id="lineLength" />
     <!-- test resources are weird by design, no validations in them -->
-    <suppress id="lineLength"
-        files="src[\\/]it[\\/]resources[\\/].*[\\/]InputLineLength.*\.java"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]InputLineLength.*\.java"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]grammar[\\/]comments[\\/].*"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]asttreestringprinter[\\/]InputAstTreeStringPrinterFullOfBlockComments\.java"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]abstractjavadoc[\\/]InputAbstractJavadocPosition.*\.java"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]abstractjavadoc[\\/]InputAbstractJavadocLeaveToken.*\.java"/>
+    <suppress files="src[\\/]it[\\/]resources[\\/].*[\\/]InputLineLength.*\.java" id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]InputLineLength.*\.java"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]grammar[\\/]comments[\\/].*"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]asttreestringprinter[\\/]InputAstTreeStringPrinterFullOfBlockComments\.java"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]abstractjavadoc[\\/]InputAbstractJavadocPosition.*\.java"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]abstractjavadoc[\\/]InputAbstractJavadocLeaveToken.*\.java"
+        id="lineLength" />
 
     <!-- we can not change expected as it will require change of main class logic -->
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/].*ExpectedXMLLogger.*\.xml"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]ant[\\/]checkstyleanttask[\\/]ExpectedCheckstyleAntTaskXmlOutput\.xml"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]ant[\\/]checkstyleanttask[\\/]ExpectedCheckstyleAntTaskSarifOutput\.sarif"/>
-    <suppress id="lineLength"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]checks[\\/]translation[\\/]Expected.*\.xml"/>
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/].*ExpectedXMLLogger.*\.xml"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]ant[\\/]checkstyleanttask[\\/]ExpectedCheckstyleAntTaskXmlOutput\.xml"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]ant[\\/]checkstyleanttask[\\/]ExpectedCheckstyleAntTaskSarifOutput\.sarif"
+        id="lineLength" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]checks[\\/]translation[\\/]Expected.*\.xml"
+        id="lineLength" />
 
     <!-- property names a too long, nothing we can do -->
-    <suppress id="lineLength"
-        files="config[\\/]org.eclipse.jdt.core.prefs"/>
+    <suppress files="config[\\/]org.eclipse.jdt.core.prefs" id="lineLength" />
     <!-- there is no way to make line wrap in property value -->
-    <suppress id="lineLength"
-        files="config[\\/]intellij-idea-inspection-scope.xml"/>
+    <suppress files="config[\\/]intellij-idea-inspection-scope.xml" id="lineLength" />
 
     <!-- we must use full paths in file pattern property value -->
-    <suppress id="lineLength" files="config[\\/]projects-to-test[\\/]openjdk17-excluded.files"/>
+    <suppress files="config[\\/]projects-to-test[\\/]openjdk17-excluded.files" id="lineLength" />
 
     <!-- this file cannot be line wrapped, It contains a list of suppressions -->
-    <suppress id="lineLength" files="config[\\/]pitest-suppressions[\\/].*"/>
+    <suppress files="config[\\/]pitest-suppressions[\\/].*" id="lineLength" />
 
     <!-- this file cannot be line wrapped, It contains a list of suppressions -->
-    <suppress id="lineLength" files="config[\\/]error-prone-suppressions[\\/].*"/>
+    <suppress files="config[\\/]error-prone-suppressions[\\/].*" id="lineLength" />
 
     <!-- this file cannot be line wrapped, It contains a list of suppressions -->
-    <suppress id="lineLength" files="config[\\/]checker-framework-suppressions[\\/].*"/>
+    <suppress files="config[\\/]checker-framework-suppressions[\\/].*" id="lineLength" />
 
     <!-- this file cannot be line wrapped, it contains cdg pitest licence -->
-    <suppress id="lineLength" files="cdg-pitest-licence.txt"/>
+    <suppress files="cdg-pitest-licence.txt" id="lineLength" />
 
     <!-- files in this directory cannot be line wrapped as they are generated by ArchUnit -->
-    <suppress id="lineLength" files="config[\\/]archunit-store.*"/>
+    <suppress files="config[\\/]archunit-store.*" id="lineLength" />
 
     <!-- We will preserve formatting of archived release notes -->
-    <suppress id="lineLength" files="[\\/]releasenotes_old_8\-0_8\-34\.xml"/>
+    <suppress files="[\\/]releasenotes_old_8\-0_8\-34\.xml" id="lineLength" />
 
     <!-- apply check numberOfTestCasesInXpath only for files in suppressionxpathfilter directory -->
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]java[\\/]com[\\/].*" />
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]base[\\/].*" />
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]resources[\\/].*" />
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]resources-noncompilable[\\/].*" />
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]java[\\/]com[\\/].*" />
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]test[\\/].*" />
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]suppressionxpathfilter[\\/]AbstractXpathTestSupport.java"/>
+    <suppress files="src[\\/]it[\\/]java[\\/]com[\\/].*" id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]base[\\/].*"
+        id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]it[\\/]resources[\\/].*" id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]it[\\/]resources-noncompilable[\\/].*" id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]it[\\/]java[\\/]com[\\/].*" id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]test[\\/].*" id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]suppressionxpathfilter[\\/]AbstractXpathTestSupport.java"
+        id="numberOfTestCasesInXpath" />
 
     <!-- Until https://github.com/checkstyle/checkstyle/issues/11549 -->
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]suppressionxpathfilter[\\/]XpathRegressionJavadocStyleTest.java"/>
-    <suppress id="numberOfTestCasesInXpath"
-        files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]suppressionxpathfilter[\\/]XpathRegressionJavadocStyleTest.java"/>
+    <suppress files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]suppressionxpathfilter[\\/]XpathRegressionJavadocStyleTest.java"
+        id="numberOfTestCasesInXpath" />
+    <suppress files="src[\\/]it[\\/]java[\\/]org[\\/]checkstyle[\\/]suppressionxpathfilter[\\/]XpathRegressionJavadocStyleTest.java"
+        id="numberOfTestCasesInXpath" />
 
     <!-- Empty files that are used as input for UT -->
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]checks[\\/]newlineatendoffile[\\/].*"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]checks[\\/]translation[\\/].*"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources-noncompilable[\\/].*[\\/]checks[\\/]translation[\\/].*"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources-noncompilable[\\/].*[\\/]packagedeclaration[\\/]InputPackageDeclarationEmptyFile\.java"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]checkstyleanttask[\\/]InputCheckstyleAntTaskEmptyConfig\.xml"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]checkstyleanttask[\\/]InputCheckstyleAntTaskEmptyConfig\.xml"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]regexponfilename[\\/].*"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]grammar[\\/]InputRegressionEmptyAst\.txt"/>
-    <suppress id="noEmptyFile"
-        files="src[\\/]test[\\/]resources[\\/].*[\\/]InputNoCodeInFile1\.java"/>
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]checks[\\/]newlineatendoffile[\\/].*"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]checks[\\/]translation[\\/].*"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources-noncompilable[\\/].*[\\/]checks[\\/]translation[\\/].*"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources-noncompilable[\\/].*[\\/]packagedeclaration[\\/]InputPackageDeclarationEmptyFile\.java"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]checkstyleanttask[\\/]InputCheckstyleAntTaskEmptyConfig\.xml"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]checkstyleanttask[\\/]InputCheckstyleAntTaskEmptyConfig\.xml"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]regexponfilename[\\/].*"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]grammar[\\/]InputRegressionEmptyAst\.txt"
+        id="noEmptyFile" />
+    <suppress files="src[\\/]test[\\/]resources[\\/].*[\\/]InputNoCodeInFile1\.java"
+        id="noEmptyFile" />
 
     <!-- not a curl command but a text replacement -->
-    <suppress id="properCurlCommand" files=".ci[\\/]validation\.sh"/>
+    <suppress files=".ci[\\/]validation\.sh" id="properCurlCommand" />
     <!-- azure does not support this curl command -->
-    <suppress id="properCurlCommand" files=".ci[\\/]test-spelling-unknown-words\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]run-link-check-plugin\.sh"/>
+    <suppress files=".ci[\\/]test-spelling-unknown-words\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]run-link-check-plugin\.sh" id="properCurlCommand" />
     <!-- other images that do not support newer curl commands until #12451 -->
-    <suppress id="properCurlCommand" files=".ci[\\/]sonar_break_build\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]no_old_refs\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]pr-description\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]close-create-milestone\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]tweet-releasenotes\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]upload-all-jar\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]update-github-page\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]update-github-milestone\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]releasenotes-gen-xdoc-push\.sh"/>
-    <suppress id="properCurlCommand" files=".ci[\\/]creation-of-issue-in-other-repos\.sh"/>
-    <suppress id="properCurlCommand" files="release\.sh"/>
+    <suppress files=".ci[\\/]sonar_break_build\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]no_old_refs\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]pr-description\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]close-create-milestone\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]tweet-releasenotes\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]upload-all-jar\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]update-github-page\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]update-github-milestone\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]releasenotes-gen-xdoc-push\.sh" id="properCurlCommand" />
+    <suppress files=".ci[\\/]creation-of-issue-in-other-repos\.sh" id="properCurlCommand" />
+    <suppress files="release\.sh" id="properCurlCommand" />
 
 </suppressions>

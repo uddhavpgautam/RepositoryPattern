@@ -1,4 +1,4 @@
-apply from: "$project.rootDir/variants.gradle"
+apply from: "$project.rootDir/build_variants.gradle"
 apply plugin: "com.github.spotbugs"
 
 project.tasks.withType(SpotBugsTask) {

@@ -17,7 +17,7 @@ buildscript {
 }
 
 //this gets called first
-apply from: "$project.rootDir/variants.gradle"
+apply from: "$project.rootDir/build_variants.gradle"
 
 //implementation of the function
 createFlavorTypeVariants { type, flavor ->
@@ -36,11 +36,8 @@ project.ext {
 }
 
 subprojects {
-    apply from: "${rootDir}/config/spotbugs/spotbugs.gradle"
-    apply from: "${rootDir}/config/checkstyle/checkstyle.gradle"
-    apply from: "${rootDir}/config/pmd/pmd.gradle"
+    apply from: "$project.rootDir/config/quality.gradle"
 }
-
 
 
 task clean(type: Delete) {
