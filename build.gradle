@@ -36,7 +36,12 @@ project.ext {
 }
 
 subprojects {
+    //includes checkstyle, spotbugs, pmd
     apply from: "$project.rootDir/config/quality.gradle"
+    afterEvaluate{
+        preBuild.dependsOn('checkstyle')
+        check.dependsOn 'checkstyle'
+    }
 }
 
 
