@@ -1,5 +1,6 @@
-#Sun Dec 18 21:14:06 EST 2022
+#Sun Dec 18 21:09:12 EST 2022
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/model/NetworkProduct.kt=1667594830251
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InheritanceJava.java=1669567294429
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/Card.kt=1668690777401
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InAndOutKotlin.kt=1671404797275
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/api/ProductApiService.kt=1667520518593
@@ -11,12 +12,12 @@
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/repository/ProductRepositoryImpl.kt=1667594830247
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/MyFileUtils.kt=1668969543943
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt=1671404797266
+module-resource*?\:/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/config/checkstyle/checkstyle_resources_suppressions.xml=BDDEDF8EEF867281EAA4B3C91E1CDC637CE9C6D2
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/fragments/CardFragment.kt=1671234702087
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/model/DataProduct.kt=1667513385412
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/repository/ProductRepository.kt=1667521142565
-configuration*?=75DB59223850079CD8471926035457618858611F
+configuration*?=A029872AED17D006CE179A4A64F13A7902056F2B
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/adapters/ScreenSlidePagerAdapter.kt=1668885300002
-module-resource*?\:/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/config/checkstyle/checkstyle_input_suppressions.xml=1E6735265E3734B7AA2219D78466BB6018A33EC2
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/model/DBProduct.kt=1667594830257
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/preferences/ProductPreferences.kt=1667519881454
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/RepositoryPatternApplication.kt=1671406159759
@@ -25,6 +26,7 @@ module-resource*?\:/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/c
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/Mapper.kt=1667513385416
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/model/Product.kt=1667594830254
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/fragments/BaseCardFragment.kt=1671234702087
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/toolbars/FlingBehavior.java=1668692715225
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/CardView.kt=1671234702086
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/androidTest/java/com/example/repositorypattern/ExampleInstrumentedTest.kt=1668690777424
 /Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/ListMapperImpl.kt=1667513385413

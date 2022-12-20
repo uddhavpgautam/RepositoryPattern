@@ -1,0 +1,13 @@
+#Sun Dec 18 21:14:09 EST 2022
+configuration*?=90AFC2FA408EE768CBBD0B83B7931530D730B6A3
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/adapters/ScreenSlidePagerAdapter.kt=1668885300002
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/Card.kt=1668690777401
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/transformers/ZoomOutPageTransformer.kt=1668692715242
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/activities/MainActivity.kt=1671404797305
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/fragments/BaseCardFragment.kt=1671234702087
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/Result.kt=1667521142570
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/CardView.kt=1671234702086
+module-resource*?\:/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/config/checkstyle/checkstyle_non_main_files_suppressions.xml=CBEBF248EB2DA5A3FF630D331CEBEBD69E0FDA76
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/fragments/CardFragment.kt=1671234702087
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/cards/adapters/CardViewAdapter.kt=1668690777416
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/product/repository/ProductRepository.kt=1667521142565
