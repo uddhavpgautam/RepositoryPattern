@@ -43,6 +43,8 @@ subprojects {
         //where I have checkstyle closure, that subprojects runs
 //        preBuild.dependsOn('checkstyle')
 //        check.dependsOn 'checkstyle'
+//        preBuild.dependsOn('pmd')
+//        check.dependsOn 'pmd'
     }
 }
 

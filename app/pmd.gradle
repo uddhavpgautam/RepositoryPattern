@@ -1,7 +1,6 @@
 apply plugin: 'pmd'
-
-task pmd(type: Pmd) {
-    ruleSetFiles = files("${project.rootDir}/config/pmd/pmdtest.xml")
+pmd(type: Pmd) {
+    ruleSetFiles = files("${project.rootDir}/config/pmd/pmd.xml")
     ignoreFailures = false
     ruleSets = []
     source 'src'
