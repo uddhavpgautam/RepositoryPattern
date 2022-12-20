@@ -2,7 +2,6 @@ apply plugin: 'checkstyle'
 
 def checkstyleSuppressionConfigDir = file("${rootDir}/config/checkstyle")
 
-
 checkstyle(type: Checkstyle, group: 'Verification') {
     ignoreFailures = false
     showViolations = true

@@ -35,15 +35,16 @@ project.ext {
     SpotBugsTask = com.github.spotbugs.snom.SpotBugsTask
 }
 
+//run all the quality checks for all subprojects
 subprojects {
     //includes checkstyle, spotbugs, pmd
     apply from: "$project.rootDir/config/quality.gradle"
     afterEvaluate{
-        preBuild.dependsOn('checkstyle')
-        check.dependsOn 'checkstyle'
+        //where I have checkstyle closure, that subprojects runs
+//        preBuild.dependsOn('checkstyle')
+//        check.dependsOn 'checkstyle'
     }
 }
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir
