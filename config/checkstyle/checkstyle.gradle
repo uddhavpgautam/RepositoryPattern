@@ -1,15 +1,17 @@
 apply plugin: 'checkstyle'
-task checkstylemethod(type: Checkstyle) {
+
+def checkstyleSuppressionConfigDir = file("${rootDir}/config/checkstyle")
+
+task checkstyle(type: Checkstyle) {
     description 'Runs Checkstyle inspection against Android sourcesets.'
     group = 'Code Quality'
     ignoreFailures = false
-    showViolations = false
-    source 'src/main', 'src/release', 'src/androidTest/java'
+    showViolations = true
+    source 'src'
     include '**/*.java', '**/*.kt'
-    exclude '**/gen/**'
-    exclude '**/R.java'
-    exclude '**/BuildConfig.java'
+    exclude '**/R.java', '**/BuildConfig.java', '**/gen/**'
     classpath = files()
     configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
     configProperties.lineWidth = 120
+    configProperties.checkstyleSuppressionConfigDir = checkstyleSuppressionConfigDir
 }

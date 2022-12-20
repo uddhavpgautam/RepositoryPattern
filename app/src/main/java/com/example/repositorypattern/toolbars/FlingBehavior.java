@@ -15,9 +15,6 @@ public final class FlingBehavior extends AppBarLayout.Behavior {
     private static final int TOP_CHILD_FLING_THRESHOLD = 3;
     private boolean isPositive;
 
-    public FlingBehavior() {
-    }
-
     public FlingBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
     }

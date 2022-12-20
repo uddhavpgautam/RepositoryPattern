@@ -7,12 +7,13 @@
 what the following rules do, please see the checkstyle configuration
 page at http://checkstyle.sourceforge.net/config.html -->
 <module name="Checker">
+    <module name="JavadocPackage" />
     <!--
         LENGTH and CODING CHECKS
         -->
     <module name="LineLength">
         <!-- Checks if a line is too long. -->
-        <property name="max" default="100"
+        <property name="max" default="700"
             value="${com.puppycrawl.tools.checkstyle.checks.sizes.LineLength.max}" />
         <property name="severity" value="error" />
         <!--
@@ -58,10 +59,16 @@ page at http://checkstyle.sourceforge.net/config.html -->
     </module>
     <!-- All Java AST specific tests live under TreeWalker module. -->
     <module name="TreeWalker">
+        <module name="EmptyBlock" />
+        <!--        Load a class of a pre-specified package-->
+        <module name="AvoidStarImport">
+            <property name="excludes" value="java.io,java.net,java.lang.Math" />
+            <property name="allowClassImports" value="false" />
+            <property name="allowStaticMemberImports" value="false" />
+        </module>
         <!--
-        IMPORT CHECKS
-        -->
-        <module name="AvoidStarImport" />
+       IMPORT CHECKS
+       -->
         <module name="RedundantImport">
             <!-- Checks for redundant import statements. -->
             <property name="severity" value="error" />
@@ -78,9 +85,7 @@ page at http://checkstyle.sourceforge.net/config.html -->
             <property name="tokens" value="STATIC_IMPORT, IMPORT" />
         </module>
         <module name="IllegalImport" />
-        <module name="UnusedImports">
-            <property name="processJavadoc" value="true" />
-        </module>
+        <module name="UnusedImports" />
         <!--
         CLASS CHECKS
         -->
@@ -255,6 +260,10 @@ page at http://checkstyle.sourceforge.net/config.html -->
             <property name="option" value="eol" />
         </module>
         <module name="SuppressWarningsHolder" />
+    </module>
+    <module name="SuppressionFilter">
+        <property name="file" value="${config_loc}/suppressions.xml"/>
+        <property name="optional" value="false"/>
     </module>
     <module name="SuppressWarningsFilter" />
 </module>
