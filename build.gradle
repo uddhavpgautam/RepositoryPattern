@@ -38,13 +38,12 @@ project.ext {
 //run all the quality checks for all subprojects
 subprojects {
     //includes checkstyle, spotbugs, pmd
-    apply from: "$project.rootDir/config/quality.gradle"
+    apply from: "$project.rootDir/config/codequality.gradle"
     afterEvaluate{
-        //where I have checkstyle closure, that subprojects runs
-//        preBuild.dependsOn('checkstyle')
-//        check.dependsOn 'checkstyle'
-//        preBuild.dependsOn('pmd')
-//        check.dependsOn 'pmd'
+        //preBuild.dependsOn('checkstyle')
+        //check.dependsOn 'checkstyle'
+        //preBuild.dependsOn('pmd')
+        //check.dependsOn 'pmd'
     }
 }
 

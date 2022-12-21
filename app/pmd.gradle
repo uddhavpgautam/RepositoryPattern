@@ -1,9 +1,11 @@
 apply plugin: 'pmd'
-pmd(type: Pmd) {
-    ruleSetFiles = files("${project.rootDir}/config/pmd/pmd.xml")
-    ignoreFailures = false
+
+pmd(type: Pmd, group: 'Verification') {
+    ruleSetFiles = files("${project.rootDir}/config/pmd/pmdmain.xml")
     ruleSets = []
+    ignoreFailures = false
     source 'src'
-    include '**/*.kt'
-    exclude '**/gen/**'
+    include '**/*.java', '**/*.kt'
+    exclude '**/R.java', '**/BuildConfig.java', '**/gen/**'
+    classpath = files()
 }
