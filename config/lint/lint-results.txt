@@ -1,0 +1,5 @@
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/build.gradle:122: Error: Unknown issue id "InlineApi". Did you mean 'InlinedApi' (Using inlined constants on older versions) ? [UnknownIssueId]
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InAndOutKotlin.kt:33: Information: TODO call found; points to code which must be fixed prior to release [StopShip]
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt:25: Information: TODO call found; points to code which must be fixed prior to release [StopShip]
+/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt:31: Information: TODO call found; points to code which must be fixed prior to release [StopShip]
+1 errors, 0 warnings

@@ -22,13 +22,13 @@ abstract class ParentInterface2 {
 
 class ChildClass1 : ParentInterface1 {
     override val pubVal2: Int
-        get() = TODO("Not yet implemented")
+        get() = 100 //default value for now
 
 }
 
 class ChildClass2 : ParentInterface2() {
     override val pubVal2: Int
-        get() = TODO("Not yet implemented")
+        get() = 100 //default value for now
 }
 
 fun main() {

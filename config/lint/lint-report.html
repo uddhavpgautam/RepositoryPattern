@@ -1,0 +1,321 @@
+{
+    "$schema" : "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+    "version" : "2.1.0",
+    "runs" : [
+        {
+            "tool": {
+                "driver": {
+                    "name": "Android Lint",
+                    "fullName": "Android Lint (in gradle)",
+                    "version": "7.3.1",
+                    "semanticVersion": "7.3.1",
+                    "organization": "Google",
+                    "informationUri": "https://developer.android.com/studio/write/lint",
+                    "fullDescription": {
+                        "text": "Static analysis originally for Android source code but now performing general analysis"
+                    },
+                    "language": "en-US",
+                    "rules": [
+                        {
+                            "id": "StopShip",
+                            "shortDescription": {
+                                "text": "Code contains STOPSHIP marker",
+                                "markdown": "Code contains `STOPSHIP` marker"
+                            },
+                            "fullDescription": {
+                                "text": "Using the comment // STOPSHIP can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.\n\nIn Kotlin, the TODO() method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases.",
+                                "markdown": "Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.\n\nIn Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases."
+                            },
+                            "defaultConfiguration": {
+                                "level": "error",
+                                "rank": 10
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Correctness"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "UnknownIssueId",
+                            "shortDescription": {
+                                "text": "Unknown Lint Issue Id"
+                            },
+                            "fullDescription": {
+                                "text": "Lint will report this issue if it is configured with an issue id it does not recognize in for example Gradle files or lint.xml configuration files.",
+                                "markdown": "Lint will report this issue if it is configured with an issue id it does not recognize in for example Gradle files or `lint.xml` configuration files."
+                            },
+                            "defaultConfiguration": {
+                                "level": "warning",
+                                "rank": 100
+                            },
+                            "properties": {
+                                "tags": [
+                                    "Lint"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            "originalUriBaseIds": {
+                "%SRCROOT%": {
+                    "uri": "file:///Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/"
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "UnknownIssueId",
+                    "ruleIndex": 1,
+                    "message": {
+                        "text": "Unknown issue id \"InlineApi\". Did you mean 'InlinedApi' (Using inlined constants on older versions) ?"
+                    },
+                    "level": "error",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/build.gradle"
+                                },
+                                "region": {
+                                    "startLine": 122,
+                                    "startColumn": 26,
+                                    "endLine": 122,
+                                    "endColumn": 35,
+                                    "charOffset": 3649,
+                                    "charLength": 9,
+                                    "snippet": {
+                                        "text": "InlineApi"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 120,
+                                    "endLine": 125,
+                                    "snippet": {
+                                        "text": "        sarifReport true\n        sarifOutput file(\"$project.rootDir/config/lint/lint-report.html\")\n        fatal 'NewApi', 'InlineApi'\n        error 'Wakelock', 'TextViewEdits'"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "9926c2565b768196"
+                    }
+                },
+                {
+                    "ruleId": "StopShip",
+                    "ruleIndex": 0,
+                    "message": {
+                        "text": "TODO call found; points to code which must be fixed prior to release",
+                        "markdown": "`TODO` call found; points to code which must be fixed prior to release"
+                    },
+                    "level": "note",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/java/com/example/repositorypattern/utils/InAndOutKotlin.kt"
+                                },
+                                "region": {
+                                    "startLine": 33,
+                                    "startColumn": 21,
+                                    "endLine": 33,
+                                    "endColumn": 27,
+                                    "charOffset": 880,
+                                    "charLength": 6,
+                                    "snippet": {
+                                        "text": "TODO()"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 31,
+                                    "endLine": 36,
+                                    "snippet": {
+                                        "text": "            is Double -> other.compareTo(1.0)\n            is Long -> other.compareTo(1L)\n            else -> TODO()\n        }"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Remove TODO"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/java/com/example/repositorypattern/utils/InAndOutKotlin.kt"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 33,
+                                                "startColumn": 21,
+                                                "charOffset": 880,
+                                                "endLine": 33,
+                                                "endColumn": 27,
+                                                "charLength": 6
+                                            },
+                                            "insertedContent": {
+                                                "text": "\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "d3af35d1eea1f5c0"
+                    }
+                },
+                {
+                    "ruleId": "StopShip",
+                    "ruleIndex": 0,
+                    "message": {
+                        "text": "TODO call found; points to code which must be fixed prior to release",
+                        "markdown": "`TODO` call found; points to code which must be fixed prior to release"
+                    },
+                    "level": "note",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt"
+                                },
+                                "region": {
+                                    "startLine": 25,
+                                    "startColumn": 17,
+                                    "endLine": 25,
+                                    "endColumn": 44,
+                                    "charOffset": 498,
+                                    "charLength": 27,
+                                    "snippet": {
+                                        "text": "TODO(\"Not yet implemented\")"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 23,
+                                    "endLine": 28,
+                                    "snippet": {
+                                        "text": "class ChildClass1 : ParentInterface1 {\n    override val pubVal2: Int\n        get() = TODO(\"Not yet implemented\")\n"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Remove TODO"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 25,
+                                                "startColumn": 17,
+                                                "charOffset": 498,
+                                                "endLine": 25,
+                                                "endColumn": 44,
+                                                "charLength": 27
+                                            },
+                                            "insertedContent": {
+                                                "text": "\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "839ef4a988f4a7f5"
+                    }
+                },
+                {
+                    "ruleId": "StopShip",
+                    "ruleIndex": 0,
+                    "message": {
+                        "text": "TODO call found; points to code which must be fixed prior to release",
+                        "markdown": "`TODO` call found; points to code which must be fixed prior to release"
+                    },
+                    "level": "note",
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uriBaseId": "%SRCROOT%",
+                                    "uri": "app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt"
+                                },
+                                "region": {
+                                    "startLine": 31,
+                                    "startColumn": 17,
+                                    "endLine": 31,
+                                    "endColumn": 44,
+                                    "charOffset": 617,
+                                    "charLength": 27,
+                                    "snippet": {
+                                        "text": "TODO(\"Not yet implemented\")"
+                                    }
+                                },
+                                "contextRegion": {
+                                    "startLine": 29,
+                                    "endLine": 34,
+                                    "snippet": {
+                                        "text": "class ChildClass2 : ParentInterface2() {\n    override val pubVal2: Int\n        get() = TODO(\"Not yet implemented\")\n}"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "fixes": [
+                        {
+                            "description": {
+                                "text": "Remove TODO"
+                            },
+                            "artifactChanges": [
+                                {
+                                    "artifactLocation": {
+                                        "uriBaseId": "%SRCROOT%",
+                                        "uri": "app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt"
+                                    },
+                                    "replacements": [
+                                        {
+                                            "deletedRegion": {
+                                                "startLine": 31,
+                                                "startColumn": 17,
+                                                "charOffset": 617,
+                                                "endLine": 31,
+                                                "endColumn": 44,
+                                                "charLength": 27
+                                            },
+                                            "insertedContent": {
+                                                "text": "\n"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "sourceContext/v1": "1260cd5e17c85989"
+                    }
+                }
+            ]
+        }
+    ]
+}

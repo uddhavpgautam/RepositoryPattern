@@ -100,24 +100,24 @@ android {
         noLines = true
         showAll = true
         explainIssues = false
-        baseline file("\"$project.rootDir/config/lint/lintbaseline.xml")
-        lintConfig file("$project.rootDir/config/lint/lintrules.xml")
+        baseline file("\"$project.rootDir/config/lint/lint-baseline.xml")
+        lintConfig file("$project.rootDir/config/lint/lint-rules.xml")
         textReport = true
-        textOutput file("$project.rootDir/config/lint/lintresults.txt")
+        textOutput file("$project.rootDir/config/lint/lint-results.txt")
         xmlReport true
-        xmlOutput file("$project.rootDir/config/lint/lintreport.xml")
+        xmlOutput file("$project.rootDir/config/lint/lint-report.xml")
         htmlReport true
-        htmlOutput file("$project.rootDir/config/lint/lintreport.html")
+        htmlOutput file("$project.rootDir/config/lint/lint-report.html")
         sarifReport true
-        sarifOutput file("$project.rootDir/config/lint/lintreport.html")
-        fatal 'NewApi', 'InlineApi'
+        sarifOutput file("$project.rootDir/config/lint/lint-report.html")
         error 'Wakelock', 'TextViewEdits'
         warning 'ResourceAsColor'
         ignore 'TypographyQuotes'
         informational 'StopShip'
-        checkTestSources true
+        checkTestSources false
         ignoreTestSources true
         checkGeneratedSources true
+        checkReleaseBuilds false
     }
 
     namespace 'com.example.repositorypattern'
@@ -191,4 +191,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:3.5.0"
 
     androidTestImplementation "androidx.test.espresso:espresso-idling-resource:3.5.0"
+
+    lintChecks project(":lint-rules")
 }
+

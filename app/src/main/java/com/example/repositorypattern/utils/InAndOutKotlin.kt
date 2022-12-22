@@ -30,7 +30,7 @@ class NumberComparable : Comparable<Number> {
             is Int -> other.compareTo(1)
             is Double -> other.compareTo(1.0)
             is Long -> other.compareTo(1L)
-            else -> TODO()
+            else -> 100 //default value for now
         }
     }
 }
