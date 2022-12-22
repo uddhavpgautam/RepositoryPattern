@@ -88,31 +88,45 @@ android {
     }
 
     lint {
-        disable 'TypographyFractions','TypographyQuotes'
-        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
-        checkOnly 'NewApi', 'InlinedApi'
-        quiet true
-        ignoreWarnings true
-        checkDependencies true
-    }
-
-    lintOptions {
-        baseline file("\"$project.rootDir/config/lint/lint-baseline.xml")
+        quiet = false
+        abortOnError = true
+        checkReleaseBuilds = true
+        ignoreWarnings = false
+        checkAllWarnings = true
+        warningsAsErrors = true
+        disable += ['TypographyFractions', 'TypographyQuotes']
+        enable += ['RtlHardcoded','RtlCompat', 'RtlEnabled']
+        checkOnly += ['NewApi', 'InlinedApi']
+        noLines = true
+        showAll = true
+        explainIssues = false
+        baseline file("\"$project.rootDir/config/lint/lintbaseline.xml")
         lintConfig file("$project.rootDir/config/lint/lintrules.xml")
-        htmlOutput file("$project.buildDir/outputs/lint/lint.html")
-        warningsAsErrors true
-        xmlReport false
+        textReport = true
+        textOutput file("$project.rootDir/config/lint/lintresults.txt")
+        xmlReport true
+        xmlOutput file("$project.rootDir/config/lint/lintreport.xml")
         htmlReport true
-        abortOnError false
+        htmlOutput file("$project.rootDir/config/lint/lintreport.html")
+        sarifReport true
+        sarifOutput file("$project.rootDir/config/lint/lintreport.html")
+        fatal 'NewApi', 'InlineApi'
+        error 'Wakelock', 'TextViewEdits'
+        warning 'ResourceAsColor'
+        ignore 'TypographyQuotes'
+        informational 'StopShip'
+        checkTestSources true
+        ignoreTestSources true
+        checkGeneratedSources true
     }
 
     namespace 'com.example.repositorypattern'
+    ndkVersion '25.1.8937393'
+    compileSdk 33
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-//    implementation 'com.github.chesire:lintrules:1.2.6'
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
