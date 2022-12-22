@@ -87,8 +87,18 @@ android {
         jvmTarget = JavaVersion.VERSION_11
     }
 
+    lint {
+        disable 'TypographyFractions','TypographyQuotes'
+        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        checkOnly 'NewApi', 'InlinedApi'
+        quiet true
+        ignoreWarnings true
+        checkDependencies true
+    }
+
     lintOptions {
-        lintConfig file("$project.rootDir/config/lint/lint-rules.xml")
+        baseline file("\"$project.rootDir/config/lint/lint-baseline.xml")
+        lintConfig file("$project.rootDir/config/lint/lintrules.xml")
         htmlOutput file("$project.buildDir/outputs/lint/lint.html")
         warningsAsErrors true
         xmlReport false
@@ -101,6 +111,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+//    implementation 'com.github.chesire:lintrules:1.2.6'
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
