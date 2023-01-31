@@ -70,3 +70,4 @@ class CardView(layoutInflater: LayoutInflater, container: ViewGroup?) {
         )
     }
 }
+

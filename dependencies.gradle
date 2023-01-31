@@ -1,23 +1,23 @@
 def versions = [:]
-def deps = [:]
+def dependencies = [:]
 
-//expose defined deps and versions to outsiders
-ext.deps = deps
+//expose defined dependencies and versions to outsiders
+ext.deps = dependencies
 ext.versions = versions
 ext.addRepos = this.&addRepos
 ext.room_version = '2.4.3'
 
 def android = [:]
 android.gradle_plugin = 'com.android.tools.build:gradle:7.3.1'
-deps.android = android //link android with deps
+dependencies.android = android //link android with dependencies
 
 def kotlin = [:]
 kotlin.gradle_plugin = 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
-deps.kotlin = kotlin
+dependencies.kotlin = kotlin
 
 def spotbugs = [:]
 spotbugs.gradle_plugin = 'gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.3'
-deps.spotbugs = spotbugs
+dependencies.spotbugs = spotbugs
 
 static def addRepos(RepositoryHandler repositoryHandler) {
     repositoryHandler.google()

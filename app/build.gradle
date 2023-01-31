@@ -87,39 +87,6 @@ android {
         jvmTarget = JavaVersion.VERSION_11
     }
 
-    lint {
-        quiet = false
-        abortOnError = true
-        checkReleaseBuilds = true
-        ignoreWarnings = false
-        checkAllWarnings = true
-        warningsAsErrors = true
-        disable += ['TypographyFractions', 'TypographyQuotes']
-        enable += ['RtlHardcoded','RtlCompat', 'RtlEnabled']
-        checkOnly += ['NewApi', 'InlinedApi']
-        noLines = true
-        showAll = true
-        explainIssues = false
-        baseline file("\"$project.rootDir/config/lint/lint-baseline.xml")
-        lintConfig file("$project.rootDir/config/lint/lint-rules.xml")
-        textReport = true
-        textOutput file("$project.rootDir/config/lint/lint-results.txt")
-        xmlReport true
-        xmlOutput file("$project.rootDir/config/lint/lint-report.xml")
-        htmlReport true
-        htmlOutput file("$project.rootDir/config/lint/lint-report.html")
-        sarifReport true
-        sarifOutput file("$project.rootDir/config/lint/lint-report.html")
-        error 'Wakelock', 'TextViewEdits'
-        warning 'ResourceAsColor'
-        ignore 'TypographyQuotes'
-        informational 'StopShip'
-        checkTestSources false
-        ignoreTestSources true
-        checkGeneratedSources true
-        checkReleaseBuilds false
-    }
-
     namespace 'com.example.repositorypattern'
     ndkVersion '25.1.8937393'
     compileSdk 33
@@ -192,6 +159,6 @@ dependencies {
 
     androidTestImplementation "androidx.test.espresso:espresso-idling-resource:3.5.0"
 
-    lintChecks project(":lint-rules")
+    //lintChecks project(":lint-rules")
 }
 

@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.repositorypattern.R
-import com.example.repositorypattern.cards.adapters.CardViewAdapter
 import com.example.repositorypattern.adapters.ScreenSlidePagerAdapter
 import com.example.repositorypattern.animators.ViewPager2ViewHeightAnimator
+import com.example.repositorypattern.cards.adapters.CardViewAdapter
 import com.example.repositorypattern.transformers.ZoomOutPageTransformer
 
 class ViewPager2HostingFragment : Fragment() {

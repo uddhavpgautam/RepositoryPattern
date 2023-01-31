@@ -11,8 +11,10 @@ class IssueRegistryTest {
         val output = IssueRegistry().issues
             .joinToString(separator = "\n") { "- **${it.id}** - ${it.getExplanation(TextFormat.RAW)}" }
 
-        assertThat("""
+        assertThat(
+            """
         - **HamcrestImport** - Use Google Truth instead
-        """.trimIndent()).isEqualTo(output)
+        """.trimIndent()
+        ).isEqualTo(output)
     }
 }

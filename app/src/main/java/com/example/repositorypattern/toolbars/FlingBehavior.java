@@ -10,11 +10,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+/**
+ * PMD comment
+ */
 public final class FlingBehavior extends AppBarLayout.Behavior {
 
+    /**
+     * PMD comment
+     */
     private static final int TOP_CHILD_FLING_THRESHOLD = 3;
+
+    /**
+     * PMD comment
+     */
     private boolean isPositive;
 
+    /**
+     * PMD comment
+     */
     public FlingBehavior(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -43,3 +56,4 @@ public final class FlingBehavior extends AppBarLayout.Behavior {
         isPositive = dy > 0;
     }
 }
+

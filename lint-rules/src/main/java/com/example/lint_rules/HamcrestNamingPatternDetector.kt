@@ -14,7 +14,12 @@ class HamcrestInvalidImportHandler(private val context: JavaContext) : UElementH
     override fun visitImportStatement(node: UImportStatement) {
         node.importReference?.let { importReference ->
             if (importReference.asSourceString().contains("org.hamcrest.")) {
-                context.report(IssueHamcrestImport, node, context.getLocation(importReference), "Forbidden import")
+                context.report(
+                    IssueHamcrestImport,
+                    node,
+                    context.getLocation(importReference),
+                    "Forbidden import"
+                )
             }
         }
     }

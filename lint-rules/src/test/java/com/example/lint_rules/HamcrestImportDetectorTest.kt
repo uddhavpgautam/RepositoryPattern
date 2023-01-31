@@ -9,11 +9,15 @@ class HamcrestImportDetectorTest {
     @Test
     fun `should not report imports that are not hamcrest`() {
         TestLintTask.lint()
-            .files(TestFiles.java("""
+            .files(
+                TestFiles.java(
+                    """
             package foo;
             import foo.R;
             class Example {
-            }""").indented())
+            }"""
+                ).indented()
+            )
             .issues(IssueHamcrestImport)
             .run()
             .expectClean()
@@ -23,17 +27,22 @@ class HamcrestImportDetectorTest {
     fun `should warning about hamcrest import`() {
         TestLintTask.lint()
             .files(
-                TestFiles.java("""
+                TestFiles.java(
+                    """
           package foo;
           import org.hamcrest.MatcherAssert.assertThat;
           class Example {
-          }""").indented())
+          }"""
+                ).indented()
+            )
             .issues(IssueHamcrestImport)
             .run()
-            .expect("""
+            .expect(
+                """
           |src/foo/Example.java:2: Warning: Forbidden import [HamcrestImport]
           |import org.hamcrest.MatcherAssert.assertThat;
           |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          |0 errors, 1 warnings""".trimMargin())
+          |0 errors, 1 warnings""".trimMargin()
+            )
     }
 }

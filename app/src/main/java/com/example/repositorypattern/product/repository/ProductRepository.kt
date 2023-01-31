@@ -8,3 +8,4 @@ abstract class ProductRepository {
     abstract fun getProducts(): Single<Result<List<Product>>>
     abstract fun getWishlist(): Single<Result<List<Product>>>
 }
+

@@ -1,13 +1,9 @@
 package com.example.repositorypattern.activities
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
 import androidx.appcompat.app.AppCompatActivity
 import com.example.repositorypattern.R
 import com.example.repositorypattern.fragments.ThreadCommunicationFragment
-import com.example.repositorypattern.fragments.ViewPager2HostingFragment
 import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
 
 //eval `ssh-agent -s`; ssh-add /Users/roshanidahal/.ssh/id_rsa; git push
@@ -32,3 +28,4 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .commitNow()
     }
 }
+

@@ -15,12 +15,15 @@ class IssueRegistry : com.android.tools.lint.client.api.IssueRegistry() {
     override val api: Int = com.android.tools.lint.detector.api.CURRENT_API
 }
 
-val IssueHamcrestImport = Issue.create("HamcrestImport",
+val IssueHamcrestImport = Issue.create(
+    "HamcrestImport",
     "Hamcrest is deprecated",
     "Use Google Truth instead",
     CORRECTNESS,
     5,
     Severity.WARNING,
-    Implementation(HamcrestNamingPatternDetector::class.java,
-        EnumSet.of(Scope.JAVA_FILE, Scope.TEST_SOURCES))
+    Implementation(
+        HamcrestNamingPatternDetector::class.java,
+        EnumSet.of(Scope.JAVA_FILE, Scope.TEST_SOURCES)
+    )
 )

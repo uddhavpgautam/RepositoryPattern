@@ -1,60 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 7.3.1">
+<issues by="lint 7.3.1" format="6">
 
-    <issue
+    <issue category="Lint"
+        explanation="Lint will report this issue if it is configured with an issue id it does not recognize in for example Gradle files or `lint.xml` configuration files."
         id="UnknownIssueId"
-        severity="Error"
         message="Unknown issue id &quot;InlineApi&quot;. Did you mean &apos;InlinedApi&apos; (Using inlined constants on older versions) ?"
-        category="Lint"
-        priority="1"
-        summary="Unknown Lint Issue Id"
-        explanation="Lint will report this issue if it is configured with an issue id it does not recognize in for example Gradle files or `lint.xml` configuration files.">
-        <location
+        priority="1" severity="Error" summary="Unknown Lint Issue Id">
+        <location column="26"
             file="/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/build.gradle"
-            line="122"
-            column="26"/>
+            line="122" />
     </issue>
 
-    <issue
+    <issue category="Correctness"
+        explanation="Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.&#xA;&#xA;In Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases."
         id="StopShip"
-        severity="Information"
         message="`TODO` call found; points to code which must be fixed prior to release"
-        category="Correctness"
-        priority="10"
-        summary="Code contains `STOPSHIP` marker"
-        explanation="Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.&#xA;&#xA;In Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases.">
-        <location
+        priority="10" severity="Information" summary="Code contains `STOPSHIP` marker">
+        <location column="21"
             file="/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InAndOutKotlin.kt"
-            line="33"
-            column="21"/>
+            line="33" />
     </issue>
 
-    <issue
+    <issue category="Correctness"
+        explanation="Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.&#xA;&#xA;In Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases."
         id="StopShip"
-        severity="Information"
         message="`TODO` call found; points to code which must be fixed prior to release"
-        category="Correctness"
-        priority="10"
-        summary="Code contains `STOPSHIP` marker"
-        explanation="Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.&#xA;&#xA;In Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases.">
-        <location
+        priority="10" severity="Information" summary="Code contains `STOPSHIP` marker">
+        <location column="17"
             file="/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt"
-            line="25"
-            column="17"/>
+            line="25" />
     </issue>
 
-    <issue
+    <issue category="Correctness"
+        explanation="Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.&#xA;&#xA;In Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases."
         id="StopShip"
-        severity="Information"
         message="`TODO` call found; points to code which must be fixed prior to release"
-        category="Correctness"
-        priority="10"
-        summary="Code contains `STOPSHIP` marker"
-        explanation="Using the comment `// STOPSHIP` can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these. In Gradle projects, this is only checked for non-debug (release) builds.&#xA;&#xA;In Kotlin, the `TODO()` method is also treated as a stop ship marker; you can use it to make incomplete code compile, but it will throw an exception at runtime and therefore should be fixed before shipping releases.">
-        <location
+        priority="10" severity="Information" summary="Code contains `STOPSHIP` marker">
+        <location column="17"
             file="/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/java/com/example/repositorypattern/utils/InheritenceExample.kt"
-            line="31"
-            column="17"/>
+            line="31" />
     </issue>
 
 </issues>

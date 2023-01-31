@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="InvalidPackage">
-        <ignore regexp="okio-.*.jar"/>
-        <ignore regexp="retrofit-.*.jar"/>
+        <ignore regexp="okio-.*.jar" />
+        <ignore regexp="retrofit-.*.jar" />
     </issue>
     <issue id="IconMissingDensityFolder" severity="ignore" />
-    <issue id="GoogleAppIndexingWarning" severity="ignore"/>
-    <issue id="ButtonCase" severity="ignore"/>
-    <issue id="ButtonStyle" severity="ignore"/>
+    <issue id="GoogleAppIndexingWarning" severity="ignore" />
+    <issue id="ButtonCase" severity="ignore" />
+    <issue id="ButtonStyle" severity="ignore" />
     <issue id="IconLauncherShape" severity="ignore" />
-    <issue id="ButtonOrder" severity="ignore"/>
-    <issue id="ObsoleteLinkCustomCheck" severity="ignore"/>
-    <issue id="ClickableViewAccessibility" severity="ignore"/>
-    <issue id="RequiredSize" severity="ignore"/>
-    <issue id="LogNotTimber" severity="ignore"/>
+    <issue id="ButtonOrder" severity="ignore" />
+    <issue id="ObsoleteLinkCustomCheck" severity="ignore" />
+    <issue id="ClickableViewAccessibility" severity="ignore" />
+    <issue id="RequiredSize" severity="ignore" />
+    <issue id="LogNotTimber" severity="ignore" />
 
     <issue id="ContentDescription" severity="informational" />
-    <issue id="IconLocation" severity="informational"/>
-    <issue id="IconMissingDensityFolder" severity="informational"/>
-    <issue id="PluralsCandidate" severity="informational"/>
+    <issue id="IconLocation" severity="informational" />
+    <issue id="IconMissingDensityFolder" severity="informational" />
+    <issue id="PluralsCandidate" severity="informational" />
     <issue id="UseCompoundDrawables" severity="informational" />
-    <issue id="IconDensities" severity="informational"/>
-    <issue id="VectorPath" severity="informational"/>
-    <issue id="AlwaysShowAction" severity="informational"/>
+    <issue id="IconDensities" severity="informational" />
+    <issue id="VectorPath" severity="informational" />
+    <issue id="AlwaysShowAction" severity="informational" />
 
     <issue id="RtlSymmetry" severity="informational" />
-    <issue id="UnusedAttribute" severity="informational"/>
-    <issue id="InvalidPackage" severity="informational"/>
-    <issue id="Autofill" severity="informational"/>
+    <issue id="UnusedAttribute" severity="informational" />
+    <issue id="InvalidPackage" severity="informational" />
+    <issue id="Autofill" severity="informational" />
     <issue id="LabelFor" severity="informational" />
-    <issue id="TooManyViews" severity="informational"/>
-    <issue id="GradleDependency" severity="informational"/>
-    <issue id="TooDeepLayout" severity="informational"/>
+    <issue id="TooManyViews" severity="informational" />
+    <issue id="GradleDependency" severity="informational" />
+    <issue id="TooDeepLayout" severity="informational" />
 
 
     <issue id="ObsoleteLayoutParam">

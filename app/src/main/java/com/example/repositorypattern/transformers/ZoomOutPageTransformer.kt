@@ -45,3 +45,4 @@ class ZoomOutPageTransformer : ViewPager2.PageTransformer {
         }
     }
 }
+

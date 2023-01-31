@@ -18,3 +18,4 @@ open class BaseCardFragment : Fragment() {
     }
 
 }
+

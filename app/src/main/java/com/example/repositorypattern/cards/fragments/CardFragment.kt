@@ -40,3 +40,4 @@ class CardFragment : Fragment() {
         }
     }
 }
+

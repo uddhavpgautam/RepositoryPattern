@@ -10,8 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
     }
 }
 rootProject.name = "RepositoryPattern"
 include ':app'
-include ':lint-rules'

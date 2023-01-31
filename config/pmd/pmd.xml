@@ -135,7 +135,7 @@
     <rule ref="category/java/errorprone.xml">
         <exclude name="AvoidLiteralsInIfCondition">
             <properties>
-                <property name="ignoreMagicNumbers" value="-1,0,1"/>
+                <property name="ignoreMagicNumbers" value="-1,0,1" />
             </properties>
         </exclude>
         <exclude name="BeanMembersShouldSerialize" />
@@ -171,20 +171,20 @@
 
     <rule ref="category/java/design.xml">
         <exclude name="CyclomaticComplexity" />
-        <exclude name="TooManyMethods"/>
-        <exclude name="AvoidCatchingGenericException"/>
-        <exclude name="AvoidDeeplyNestedIfStmts"/>
-        <exclude name="NPathComplexity"/>
-        <exclude name="ExcessiveImports"/>
-        <exclude name="DataClass"/>
-        <exclude name="TooManyFields"/>
-        <exclude name="ExcessiveParameterList"/>
-        <exclude name="ExcessiveMethodLength"/>
-        <exclude name="AvoidThrowingRawExceptionTypes"/>
-        <exclude name="NcssCount"/>
-        <exclude name="ExcessiveClassLength"/>
-        <exclude name="ExcessivePublicCount"/>
-        <exclude name="CouplingBetweenObjects"/>
+        <exclude name="TooManyMethods" />
+        <exclude name="AvoidCatchingGenericException" />
+        <exclude name="AvoidDeeplyNestedIfStmts" />
+        <exclude name="NPathComplexity" />
+        <exclude name="ExcessiveImports" />
+        <exclude name="DataClass" />
+        <exclude name="TooManyFields" />
+        <exclude name="ExcessiveParameterList" />
+        <exclude name="ExcessiveMethodLength" />
+        <exclude name="AvoidThrowingRawExceptionTypes" />
+        <exclude name="NcssCount" />
+        <exclude name="ExcessiveClassLength" />
+        <exclude name="ExcessivePublicCount" />
+        <exclude name="CouplingBetweenObjects" />
         <exclude name="DataClass" />
         <exclude name="GodClass" />
         <exclude name="LawOfDemeter" />

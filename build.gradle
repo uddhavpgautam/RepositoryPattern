@@ -11,22 +11,55 @@ buildscript {
 
 apply from: "$project.rootDir/build_variants.gradle"
 
+//defined in build_variants.gradle
 createFlavorTypeVariants { type, flavor ->
-    def flavorType = "$flavor${type.capitalize()}"
-    task "spotbugs${flavorType.capitalize()}"(type: DefaultTask) {
+    //demo, full etc. are flavors
+    //debug, release, staging etc. are build types
+    def myType = "$flavor${type.capitalize()}"
+    task "spotbugs${myType.capitalize()}"(type: DefaultTask) {
+        group 'Verification'
+        description "Run Spotbugs on the whole project."
+    }
+    task "${myType}"(type: DefaultTask) {
         group 'Verification'
         description "Run Spotbugs on the whole project."
     }
 }
 
+createTypeOnlyVariants { type ->
+    def myType = "${type.capitalize()}"
+    task "spotbugs${myType.capitalize()}"(type: DefaultTask) {
+        group 'Verification'
+        description "Run Spotbugs on the whole project."
+    }
+    task "${myType}"(type: DefaultTask) {
+        group 'Verification'
+        description "Run Spotbugs on the whole project."
+    }
+}
+
+createFlavorOnlyVariants { flavor ->
+    def myType = "${flavor.capitalize()}"
+    task "spotbugs${myType.capitalize()}"(type: DefaultTask) {
+        group 'Verification'
+        description "Run Spotbugs on the whole project."
+    }
+    task "${myType}"(type: DefaultTask) {
+        group 'Verification'
+        description "Run Spotbugs on the whole project."
+    }
+}
+
+
 subprojects {
     //includes checkstyle, spotbugs, pmd
     apply from: "$project.rootDir/config/codequality.gradle"
-    afterEvaluate{
-        //preBuild.dependsOn('checkstyle')
-        //check.dependsOn 'checkstyle'
-        //preBuild.dependsOn('pmd')
-        //check.dependsOn 'pmd'
+    afterEvaluate {
+        preBuild.dependsOn('checkstyle')
+        check.dependsOn 'checkstyle'
+        preBuild.dependsOn('pmd')
+        check.dependsOn 'pmd'
+        assemble.dependsOn('lint')
     }
 }
 

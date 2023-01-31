@@ -26,3 +26,4 @@ class CardViewHolder internal constructor(private val cardView: CardView) :
         cardView.bind(card)
     }
 }
+

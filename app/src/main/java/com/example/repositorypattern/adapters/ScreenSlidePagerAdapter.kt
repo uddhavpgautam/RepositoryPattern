@@ -22,3 +22,4 @@ class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
     }
 
 }
+

@@ -14,7 +14,13 @@ ext {
 
     createTypeOnlyVariants = { closure ->
         buildTypes.each { type ->
-            closure(type, buildFlavors)
+            closure(type)
+        }
+    }
+
+    createFlavorOnlyVariants = { closure ->
+        buildFlavors.each { flavor ->
+            closure(flavor)
         }
     }
 }
