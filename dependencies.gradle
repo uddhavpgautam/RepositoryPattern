@@ -5,7 +5,7 @@ def dependencies = [:]
 ext.deps = dependencies
 ext.versions = versions
 ext.addRepos = this.&addRepos
-ext.room_version = '2.4.3'
+ext.room_version = '2.5.0'
 
 def android = [:]
 android.gradle_plugin = 'com.android.tools.build:gradle:7.3.1'
