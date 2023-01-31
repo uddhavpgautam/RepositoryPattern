@@ -1,5 +1,14 @@
+import com.github.spotbugs.snom.SpotBugsTask
+
 apply from: "$project.rootDir/build_variants.gradle"
 apply plugin: "com.github.spotbugs"
+
+buildscript {
+    dependencies {
+        classpath deps.spotbugs.gradle_plugin
+    }
+    addRepos(repositories)
+}
 
 project.tasks.withType(SpotBugsTask) {
     group 'Verification'

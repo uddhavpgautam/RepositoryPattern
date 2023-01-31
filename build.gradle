@@ -1,25 +1,16 @@
 buildscript {
-    ext {
-        room_version = '2.4.3'
-    }
-
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-
+    apply from: 'dependencies.gradle'
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.1'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
-        classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.3"
+        classpath deps.android.gradle_plugin
+        classpath deps.kotlin.gradle_plugin
+        classpath deps.spotbugs.gradle_plugin
     }
+    //similar to: repositories {mavenCentral()}
+    addRepos(repositories)
 }
 
-//this gets called first
 apply from: "$project.rootDir/build_variants.gradle"
 
-//implementation of the function
 createFlavorTypeVariants { type, flavor ->
     def flavorType = "$flavor${type.capitalize()}"
     task "spotbugs${flavorType.capitalize()}"(type: DefaultTask) {
@@ -28,14 +19,6 @@ createFlavorTypeVariants { type, flavor ->
     }
 }
 
-//project being a global variable, you can excess ext itself
-//to define project's extra properties
-project.ext {
-    //com.github.spotbugs.snom.SpotBugsTask value is defined in SpotBugs's classpath in dependency
-    SpotBugsTask = com.github.spotbugs.snom.SpotBugsTask
-}
-
-//run all the quality checks for all subprojects
 subprojects {
     //includes checkstyle, spotbugs, pmd
     apply from: "$project.rootDir/config/codequality.gradle"

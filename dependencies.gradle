@@ -1,0 +1,28 @@
+import com.android.builder.model.Dependencies
+
+def versions = [:]
+def deps = [:]
+
+//expose defined deps and versions to outsiders
+ext.deps = deps
+ext.versions = versions
+ext.addRepos = this.&addRepos
+ext.room_version = '2.4.3'
+
+def android = [:]
+android.gradle_plugin = 'com.android.tools.build:gradle:7.3.1'
+deps.android = android //link android with deps
+
+def kotlin = [:]
+kotlin.gradle_plugin = 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
+deps.kotlin = kotlin
+
+def spotbugs = [:]
+spotbugs.gradle_plugin = 'gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.3'
+deps.spotbugs = spotbugs
+
+static def addRepos(RepositoryHandler repositoryHandler) {
+    repositoryHandler.google()
+    repositoryHandler.mavenCentral()
+    repositoryHandler.maven { url 'https://plugins.gradle.org/m2/' }
+}

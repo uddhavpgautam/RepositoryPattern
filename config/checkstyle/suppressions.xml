@@ -5,9 +5,17 @@
     "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 
 <suppressions>
-    <!-- can't split long messages between lines -->
+
+    <suppress checks="[a-zA-Z0-9]*" files="R.java"/>
+    <suppress checks="[a-zA-Z0-9]*" files="BuildConfig.java"/>
+    <suppress checks="[a-zA-Z0-9]*" files="Test"/>
+    <suppress checks="[a-zA-Z0-9]*" files="Dagger"/>
+    <suppress checks="[a-zA-Z0-9]*" files=".*_.*Factory.java"/>
+    <suppress checks="[a-zA-Z0-9]*" files=".*ViewInjector.java"/>
+    <suppress checks="[a-zA-Z0-9]*" files=".*_MembersInjector.java"/>
+    <suppress checks="[a-zA-Z0-9]*" files=".*/model/.*.java"/>
+
     <suppress id="lineLengthXml" files="google_checks\.xml" lines="58,127"/>
-    <!-- don't validate generated files -->
     <suppress id="lineLengthXml" files="releasenotes_old_8\-0_8\-34\.xml"/>
     <suppress id="lineLengthXml" files="releasenotes_old_6\-0_7\-8\.xml"/>
     <suppress id="lineLengthXml" files="releasenotes_old_1\-0_5\-9\.xml"/>
@@ -17,56 +25,39 @@
         files="TokenTypes.java|IndentationCheckTest.java"
         lines="1"/>
 
-    <!-- illegal words are part of Javadoc -->
     <suppress checks="TodoComment" files=".*TodoCommentCheck\.java"/>
 
-    <!-- 'Abstract' pattern is used to show it is checking for abstract class name -->
     <suppress checks="AbstractClassNameCheck"
         files="AbstractClassNameCheck.java"/>
-    <!-- test should be named as their main class -->
     <suppress checks="AbstractClassNameCheck"
         files="AbstractCheckTest.java|AbstractClassNameCheckTest.java|
                     |AbstractJavadocCheckTest.java|
                     |AbstractViolationReporterTest.java|AbstractFileSetCheckTest.java"/>
 
-    <!-- Tone down the checking for test code -->
     <suppress checks="ExecutableStatementCount|JavaNCSS"
         files="[\\/]XdocsPagesTest\.java"/>
 
-    <!-- The Check generates too many violations, fixing them will make code unmanageable. -->
     <suppress checks="MagicNumber" files="(ParseTreeTablePresentation|MainFrame)\.java"/>
 
-    <!-- Methods that build fake AST are very long -->
     <suppress checks="MethodLength" files=".*(Generated)?Java(doc)?TokenTypesTest\.java"/>
     <suppress checks="ExecutableStatementCount"
         files=".*(Generated)?Java(doc)?TokenTypesTest\.java"/>
     <suppress checks="JavaNCSS" files=".*(Generated)?Java(doc)?TokenTypesTest\.java"/>
 
-    <!-- Till https://github.com/checkstyle/checkstyle/issues/1854 -->
     <suppress checks="TrailingComment"
         files="(InnerAssignmentCheck\.java|OperatorWrapCheck\.java|
               |AbbreviationAsWordInNameCheckTest\.java)"/>
 
-    <!-- Fixing these cases will decrease code readability -->
     <suppress checks="MultipleStringLiterals" files="JavadocStyleCheck\.java|XMLLogger\.java"/>
 
-    <!-- There are a lot of setters/getters in the Check.
-       A small number of methods is left for Check's logic -->
     <suppress checks="MethodCount" files="[\\/]JavadocMethodCheck.java$"/>
-    <!-- Apart from a complex logic there is a lot of small methods for a better readability. -->
     <suppress checks="MethodCount" files="[\\/]CommentsIndentationCheck.java$"/>
-    <!-- VisibilityModifierCheck has 7 options which require 7 additional methods (setters) -->
     <suppress checks="MethodCount" files="[\\/]VisibilityModifierCheck.java$"/>
-    <!-- RequireThisCheck has a hierarchy of nested classes which contains a lot of methods. -->
     <suppress checks="MethodCount" files="[\\/]RequireThisCheck.java$"/>
-    <!-- Apart from complex logic, there is a nested class which contains many methods.  -->
     <suppress checks="MethodCount" files="[\\/]UnusedLocalVariableCheck.java"/>
-    <!-- parse method needs catching Exceptions to print context of execution -->
     <suppress checks="IllegalCatch" files="[\\/]src[\\/]test[\\/].*[\\/]InlineConfigParser\.java"/>
 
-    <!-- we need that set of converters -->
     <suppress checks="ClassDataAbstractionCoupling" files="AutomaticBean\.java"/>
-    <!-- they are aggregators of logic, usage a several of classes is ok -->
     <suppress checks="ClassDataAbstractionCoupling"
         files="(Checker|Main|CheckstyleAntTask|JavadocDetailNodeParser|ElementNode)\.java"/>
     <suppress checks="ClassDataAbstractionCoupling"
@@ -80,27 +71,20 @@
     <suppress checks="ClassFanOutComplexity" files="CheckerTest\.java"/>
     <suppress checks="ClassFanOutComplexity" files="Checker\.java"/>
     <suppress checks="ClassFanOutComplexity" files="XdocsPagesTest\.java"/>
-    <!-- a lot of GUI elements is OK -->
     <suppress checks="ClassDataAbstractionCoupling" files="(TreeTable|MainFrame)\.java"/>
 
-    <!-- Should be fixed after moving
-    https://github.com/sevntu-checkstyle/sevntu.checkstyle/blob/master/sevntu-checks/src/main/java/com/github/sevntu/checkstyle/checks/coding/ReturnCountExtendedCheck.java
-    into the main repo, to allow skip guard sentences(or by topLinesToIgnoreCount) -->
     <suppress checks="ReturnCount" files="(ConfigurationLoader|LambdaHandler)\.java"/>
 
-    <!-- HandlerFactory crosses allowed limit for executable statements -->
     <suppress checks="ExecutableStatementCount" files="HandlerFactory\.java"/>
 
     <suppress id="noSourceforgeNetLinks" files="[\\/]releasenotes.xml"/>
     <suppress id="noSourceforgeNetLinks" files="[\\/]releasenotes_old_8\-0_8\-34\.xml"/>
     <suppress id="noSourceforgeIoLinks" files="[\\/]index.xml.vm"/>
 
-    <!-- usage of div class="wrap-content" render even indented content properly -->
     <suppress id="noIndentationConfigExamples" files="[\\/]src[\\/]xdocs[\\/]writingchecks.xml"/>
     <suppress id="noIndentationConfigExamples"
         files="[\\/]src[\\/]xdocs[\\/]beginning_development.xml"/>
 
-    <!-- these are legacy use cases until #11166 -->
     <suppress id="noUsageOfGetFileContentsMethod" files="FallThroughCheck.java"/>
     <suppress id="noUsageOfGetFileContentsMethod" files="ImportControlCheck.java"/>
     <suppress id="noUsageOfGetFileContentsMethod" files="UnusedImportsCheck.java"/>
@@ -116,10 +100,8 @@
     <suppress id="noUsageOfGetFileContentsMethod" files="EmptyLineSeparatorCheck.java"/>
     <suppress id="noUsageOfGetFileContentsMethod" files="AvoidEscapedUnicodeCharactersCheck.java"/>
 
-    <!-- until https://github.com/checkstyle/checkstyle/issues/5234 -->
     <suppress id="MatchXPathBranchContains" files="[\\/]DetailAstImplTest.java"/>
 
-    <!-- until https://github.com/checkstyle/checkstyle/issues/11123 -->
     <suppress id="ImportControlTest"
         files="[\\/]src[\\/]test[\\/]java[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]api[\\/]JavadocTokenTypesTest.java"/>
     <suppress id="ImportControlTest"
@@ -163,7 +145,6 @@
     <suppress id="ImportControlTest"
         files="[\\/]src[\\/]test[\\/]java[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]utils[\\/]TokenUtilTest.java"/>
 
-    <!-- required by JavaAstVisitor design -->
     <suppress checks="MethodCount"
         files="[\\/]src[\\/]main[\\/]java[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]JavaAstVisitor.java"/>
     <suppress checks="FileLength"
@@ -171,7 +152,6 @@
     <suppress checks="ClassFanOutComplexity"
         files="[\\/]src[\\/]main[\\/]java[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]JavaAstVisitor.java"/>
 
-    <!-- DetailAST API requires large number of methods -->
     <suppress checks="MethodCount"
         files="[\\/]src[\\/]main[\\/]java[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]DetailAstImpl.java"/>
 </suppressions>

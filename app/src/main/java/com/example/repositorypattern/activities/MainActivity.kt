@@ -1,8 +1,12 @@
 package com.example.repositorypattern.activities
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import androidx.appcompat.app.AppCompatActivity
 import com.example.repositorypattern.R
+import com.example.repositorypattern.fragments.ThreadCommunicationFragment
 import com.example.repositorypattern.fragments.ViewPager2HostingFragment
 import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
 
@@ -18,9 +22,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         collapsingToolbar.setCollapsingToolbar()
 
         //fragment transaction
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.viewpager2_hosting_fragment, ViewPager2HostingFragment.newInstance())
+//            .commitNow()
+
+        //fragment transaction
         supportFragmentManager.beginTransaction()
-            .replace(R.id.viewpager2_hosting_fragment, ViewPager2HostingFragment.newInstance())
+            .replace(R.id.viewpager2_hosting_fragment, ThreadCommunicationFragment.newInstance())
             .commitNow()
     }
-
 }
