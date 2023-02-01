@@ -20,13 +20,13 @@ createFlavorTypeVariants { type, flavor ->
         group 'Verification'
         description "Run Spotbugs on the whole project."
     }
-    task "${myType}"(type: DefaultTask) {
+    /*task "${myType}"(type: DefaultTask) {
         group 'Verification'
         description "Run Spotbugs on the whole project."
-    }
+    }*/
 }
 
-createTypeOnlyVariants { type ->
+/*createTypeOnlyVariants { type ->
     def myType = "${type.capitalize()}"
     task "spotbugs${myType.capitalize()}"(type: DefaultTask) {
         group 'Verification'
@@ -48,7 +48,7 @@ createFlavorOnlyVariants { flavor ->
         group 'Verification'
         description "Run Spotbugs on the whole project."
     }
-}
+}*/
 
 
 subprojects {
