@@ -3,7 +3,7 @@ package com.example.repositorypattern.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.repositorypattern.R
-import com.example.repositorypattern.fragments.ThreadCommunicationFragment
+import com.example.repositorypattern.fragments.HandlerBasedCommunication
 import com.example.repositorypattern.toolbars.utils.CollapsingToolbar
 
 //eval `ssh-agent -s`; ssh-add /Users/roshanidahal/.ssh/id_rsa; git push
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         //fragment transaction
         supportFragmentManager.beginTransaction()
-            .replace(R.id.viewpager2_hosting_fragment, ThreadCommunicationFragment.newInstance())
+            .replace(R.id.viewpager2_hosting_fragment, HandlerBasedCommunication.newInstance())
             .commitNow()
     }
 }

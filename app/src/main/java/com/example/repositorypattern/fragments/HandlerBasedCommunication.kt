@@ -13,15 +13,14 @@ import androidx.fragment.app.Fragment
 import com.example.repositorypattern.R
 
 
-class ThreadCommunicationFragment : Fragment(), View.OnClickListener {
+class HandlerBasedCommunication : Fragment(), View.OnClickListener {
     private lateinit var firstEditText: EditText
     private lateinit var secondEditText: EditText
     private lateinit var firstButton: Button
-    private lateinit var secondButton: Button
 
     companion object {
         @JvmStatic
-        fun newInstance() = ThreadCommunicationFragment()
+        fun newInstance() = HandlerBasedCommunication()
         lateinit var uiHandler: Handler
     }
 
@@ -38,8 +37,6 @@ class ThreadCommunicationFragment : Fragment(), View.OnClickListener {
         secondEditText = requireActivity().findViewById(R.id.secondEditText)
         firstButton = requireActivity().findViewById(R.id.firstButton)
         firstButton.setOnClickListener(this)
-        secondButton = requireActivity().findViewById(R.id.secondButton)
-        secondButton.setOnClickListener(this)
     }
 
     override fun onStart() {
@@ -84,7 +81,7 @@ class ThreadCommunicationFragment : Fragment(), View.OnClickListener {
                     val bundle = Bundle()
                     bundle.putString("data", toSend)
                     dataToSend.data = bundle
-                    uiHandler.sendMessage(dataToSend)
+                    uiHandler.sendMessage(dataToSend) //send message to uiThread
                 }
 
             }

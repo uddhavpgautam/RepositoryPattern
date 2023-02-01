@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.ThreadCommunicationFragment">
+    tools:context=".fragments.HandlerBasedCommunication">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:text="First" />
 
         <Button
+            android:layout_marginStart="@dimen/margin_20"
             android:id="@+id/firstButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,12 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Second" />
-
-        <Button
-            android:id="@+id/secondButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="send" />
 
     </LinearLayout>
 
