@@ -1,4 +1,4 @@
-package com.example.repositorypattern.fragments
+package com.example.repositorypattern.fragments.intercommunication
 
 import android.os.Bundle
 import android.os.Handler
@@ -11,18 +11,19 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.repositorypattern.R
-import kotlinx.coroutines.runBlocking
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
-
-class RunOnUiThread : Fragment(), View.OnClickListener {
+class RunOnUiThreadEventBus : Fragment(), View.OnClickListener {
+    private val eventBus = EventBus.getDefault()
     private lateinit var firstEditText: EditText
     private lateinit var secondEditText: EditText
     private lateinit var firstButton: Button
 
     companion object {
         @JvmStatic
-        fun newInstance() = RunOnUiThread()
-        lateinit var uiHandler: Handler
+        fun newInstance() = RunOnUiThreadEventBus()
         lateinit var firstThreadHandler: Handler
     }
 
@@ -33,6 +34,16 @@ class RunOnUiThread : Fragment(), View.OnClickListener {
         return inflater.inflate(R.layout.fragment_thread_communication, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        eventBus.register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        eventBus.unregister(this)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         firstEditText = requireActivity().findViewById(R.id.firstEditText)
@@ -41,12 +52,9 @@ class RunOnUiThread : Fragment(), View.OnClickListener {
         firstButton.setOnClickListener(this)
     }
 
-    override fun onStart() {
-        super.onStart()
-        runFirstThread()
-
-        //MainLooper is already created so, no need to create and start it
-        uiHandler = object : Handler(Looper.getMainLooper()) {
+    override fun onResume() {
+        super.onResume()
+        val uiHandler = object : Handler(Looper.getMainLooper()) {
             override fun handleMessage(msg: Message) {
                 //update UI
                 val data: String? = msg.data.getString("data")
@@ -55,56 +63,64 @@ class RunOnUiThread : Fragment(), View.OnClickListener {
                 }
             }
         }
-
+        runFirstThread(uiHandler)
     }
 
-    private fun sendMessageFromEditTextToFirstThread(firstEditText: EditText) {
-        val dataToSend: Message = Message.obtain()
+    override fun onClick(v: View?) {
+        v?.let {
+            when (v.id) {
+                //R.id.firstButton -> sendMessageFromEditTextToFirstThread(firstEditText)
+            }
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onCustomEvent(event: CustomEvent) {
+
+        //onCustomEvent is a ACK signal after firstThread initializes firstThreadHandler
+
+        val msg: Message = Message.obtain()
         val bundle = Bundle()
         bundle.putString("data", firstEditText.text.toString())
-        dataToSend.data = bundle
+        msg.data = bundle
 
-        //need to guarantee that firstThreadHandler is already initialized
-        firstThreadHandler.sendMessage(dataToSend) //wait for ACK from FirstThread
+        firstThreadHandler.sendMessage(msg) //wait for ACK from FirstThread
     }
 
     private fun updateSecondEditText(data: String) {
         requireActivity().findViewById<EditText>(R.id.secondEditText).setText(data)
     }
 
-    override fun onClick(v: View?) {
-        v?.let {
-            when (v.id) {
-                R.id.firstButton -> sendMessageFromEditTextToFirstThread(firstEditText)
-            }
-        }
-    }
-
-    private fun runFirstThread() {
-        val firstThread = Thread() {
-            kotlin.run {
-                Looper.prepare()
+    private fun runFirstThread(uiHandler: Handler) {
+        val firstThread = Thread {
+            run {
+                Looper.prepare() //create a looper
                 firstThreadHandler = object : Handler(Looper.myLooper()!!) {
                     override fun handleMessage(msg: Message) {
                         val data: String? = msg.data.getString("data")
-                        val toSend = "Hello $data" //received data modified
+                        val modifiedMsg = "Hello $data" //received data modified
                         val dataToSend = Message.obtain()
                         val bundle = Bundle()
-                        bundle.putString("data", toSend)
+                        bundle.putString("data", modifiedMsg)
                         dataToSend.data = bundle
 
                         uiHandler.post {
                             Runnable {
-                                this@RunOnUiThread.requireActivity().findViewById<EditText>(R.id.secondEditText).setText(toSend)
+                                this@RunOnUiThreadEventBus.requireActivity()
+                                    .findViewById<EditText>(R.id.secondEditText)
+                                    .setText(modifiedMsg)
                             }.run()
                         }
-                    }
 
+                    }
                 }
-                Looper.loop()
+                //send ACK to subscriber after firstThreadHandler is initialized
+                eventBus.post(CustomEvent())
             }
-        }
-        firstThread.start()
+            Looper.loop() //start a created looper
+        }.start()
     }
 
 }
+
+class CustomEvent()
