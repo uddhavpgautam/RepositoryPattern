@@ -118,7 +118,8 @@ class RunOnUiThreadEventBus : Fragment(), View.OnClickListener {
                 eventBus.post(CustomEvent())
             }
             Looper.loop() //start a created looper
-        }.start()
+        }
+        firstThread.start()
     }
 
 }
