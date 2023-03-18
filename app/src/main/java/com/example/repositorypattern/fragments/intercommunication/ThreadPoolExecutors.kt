@@ -8,7 +8,44 @@ fun main(args: Array<String>) {
 
 fun executeTask() {
     //firstExecutor()
-    secondExecutor()
+    //secondExecutor()
+    thirdExecutor()
+}
+
+fun thirdExecutor() {
+    val executorService: ExecutorService = Executors.newFixedThreadPool(10)
+    val cachedExecutors: ExecutorService = Executors.newCachedThreadPool()
+
+    val lambdaFunctionSquare = { number: Int -> number * number }
+
+    //below loop takes time. This is like a long-running network request
+    val lambdaFunctionWhile: (Long) -> Long = { number: Long ->
+        var myVal = 0L; for (i in 0..number + 9000000000) {
+        myVal += i
+    }; myVal
+    }
+
+    /*
+    Limitations of Future interface
+        Futures cannot be completed manually.
+        There is no way to execute multiple futures (or results) in parallel and then combine the results together.
+        There are no exception handling constructs for Future.
+        Future doesn’t have the mechanism to create multiple stages of processing that can be chained together. It needs to be done manually.
+        Future doesn’t have the mechanism to notify you of the completion of an API.
+     */
+
+    val completableFuture: CompletableFuture<Long>? = CompletableFuture.supplyAsync { 5 }
+        .thenApply { intVal -> 2 * intVal }
+        .thenApplyAsync(lambdaFunctionSquare, executorService /* in different thread pool*/)
+        .thenApplyAsync(
+            { number: Int -> number + number },
+            cachedExecutors /* in different thread pool*/
+        )
+        .thenApply { intVal -> intVal.toLong() }
+        .thenApplyAsync(lambdaFunctionWhile, executorService)
+
+    println(completableFuture?.get()) //Waits if necessary for this future to complete, and then returns its result.
+    println("After CompletableFuture get done!")
 }
 
 fun secondExecutor() {
@@ -37,7 +74,11 @@ fun secondExecutor() {
     val threadPoolExecutor = ThreadPoolExecutor(5, 30, 1000, TimeUnit.SECONDS, workQueue)
 
     val rejectedExecutionHandler =
-        RejectedExecutionHandler { runnable, threadPoolExecutor1 -> threadPoolExecutor1.execute(runnable) }
+        RejectedExecutionHandler { runnable, threadPoolExecutor1 ->
+            threadPoolExecutor1.execute(
+                runnable
+            )
+        }
 
     /*
     Method that may be invoked by a ThreadPoolExecutor when execute cannot accept a task.
@@ -68,17 +109,33 @@ fun firstExecutor() {
 
     executorService.submit { MyRunnable().run() } //return null
 
-    val future1: Future<Int> = executorService.submit(MyCallable())
+    val future1: Future<Int> = executorService.submit(TaskCallable())
     val futureVal1 = future1.get()
     println(futureVal1)
 
     executorService.shutdown()
 }
 
-class MyCallable : Callable<Int> {
+class TaskCallable : Callable<Int> {
     override fun call(): Int {
         Thread.sleep(1000)
         return 100
+    }
+
+    fun method1(): Int {
+        return 100
+    }
+
+    fun method2(intPass: Int): Int {
+        return intPass
+    }
+
+    fun method3(intPass: Int): Int {
+        return intPass
+    }
+
+    fun method4(intPass: Int): Int {
+        return intPass
     }
 }
 
