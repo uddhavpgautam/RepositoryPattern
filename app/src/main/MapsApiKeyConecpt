@@ -1,0 +1,30 @@
+You should do Application (E.g., for Android only, and API restriction (e.g., just use for Maps SDK for Android)
+
+1. Application Restriction
+
+* keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+* roshanidahal@Roshanis-MacBook-Pro ~ % keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+    Alias name: androiddebugkey
+    Creation date: Mar 28, 2022
+    Entry type: PrivateKeyEntry
+    Certificate chain length: 1
+    Certificate[1]:
+    Owner: C=US, O=Android, CN=Android Debug
+    Issuer: C=US, O=Android, CN=Android Debug
+    Serial number: 1
+    Valid from: Mon Mar 28 14:56:12 EDT 2022 until: Wed Mar 20 14:56:12 EDT 2052
+    Certificate fingerprints:
+         SHA1: A7:1A:AD:B5:DE:6B:E0:87:AF:B1:C7:12:51:01:90:22:44:A2:49:87
+         SHA256: 4B:66:12:B8:5B:07:F6:79:37:45:61:37:8C:04:D7:15:35:A5:01:EB:28:AD:18:00:1C:FD:DC:0E:32:4C:5C:08
+    Signature algorithm name: SHA1withRSA (weak)
+    Subject Public Key Algorithm: 2048-bit RSA key
+    Version: 1
+
+    Warning:
+    The certificate uses the SHA1withRSA signature algorithm which is considered a security risk. This algorithm will be disabled in a future update.
+
+* now, in console.google.com add your package name and sha1 fingerprint to complete Application restriction for only Android app that match above package name
+
+2. Similarly, add API restriction in console.google.com

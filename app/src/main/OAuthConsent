@@ -1,0 +1,44 @@
+OAuth2
+OAuth 2.0, which stands for “Open Authorization”, is a standard designed to allow a website or
+application to access resources hosted by other web apps on behalf of a user.
+
+OAuth2.0 Roles
+    * Resource Owner: The user or system that owns the protected resources and can grant access to them.
+    * Client: The client is the system that requires access to the protected resources.
+                To access resources, the Client must hold the appropriate Access Token.
+    * Authorization Server: This server receives requests from the Client for Access Tokens and issues
+                them upon successful authentication and consent by the Resource Owner. The authorization server
+                exposes two endpoints: the Authorization endpoint, which handles the interactive authentication and
+                consent of the user, and the Token endpoint, which is involved in a machine to machine interaction.
+    * Resource Server: A server that protects the user’s resources and receives access requests from the Client.
+                It accepts and validates an Access Token from the Client and returns the appropriate resources to it.
+
+Apps _______ OAuth _______ Authorized domains
+n order to securely access an online service, users need to authenticate to the service—they need
+to provide proof of their identity. For an application that accesses a third-party service,
+the security problem is even more complicated. Not only does the user need to be authenticated
+to access the service, but the application also needs to be authorized to act on the user's behalf.
+E.g., I log in TDA Mobile app using my biometric or username/password. Now, Trading quote, let's
+assume, are coming from separate third-party service called DIGS service, which has separate domain.
+Those domains should be authorized domains.
+
+How OAuth helps to identify apps know these authorized domains?
+The industry standard way to deal with authentication to third-party services is the OAuth2 protocol.
+OAuth2 provides a single value, called an auth token, that represents both the user's identity and
+the application's authorization to act on the user's behalf.
+
+* App Name
+* User Support Email
+* Developer Email
+* App Logo
+* App Domain
+    Application Domain (domain of a webpage that your webview renders)
+    Application privacy policy link
+    Application terms of service link
+    Authorized domains
+
+<manifest ... >
+    <uses-permission android:name="android.permission.INTERNET" />
+    ...
+</manifest>
+

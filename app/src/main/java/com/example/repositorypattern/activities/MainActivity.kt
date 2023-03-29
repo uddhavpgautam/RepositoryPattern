@@ -31,9 +31,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .replace(R.id.viewpager2_hosting_fragment, RunOnUiThreadV1.newInstance())
             .commitNow()*/
 
-        supportFragmentManager.beginTransaction()
+        /*supportFragmentManager.beginTransaction()
             .replace(R.id.viewpager2_hosting_fragment, RunOnUiThreadEventBus.newInstance())
-            .commitNow()
+            .commitNow()*/
+
     }
 }
 
