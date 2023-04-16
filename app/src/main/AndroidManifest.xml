@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="33">
         <activity
-            android:name=".activities.NavigationDrawerActivity"
+            android:name=".simple_navigation.ActivityNavigationDrawerActivity"
             android:exported="true"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar">

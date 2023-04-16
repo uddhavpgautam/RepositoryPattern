@@ -1,4 +1,4 @@
-package com.example.repositorypattern.activities.ui.home
+package com.example.repositorypattern.simple_navigation.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
