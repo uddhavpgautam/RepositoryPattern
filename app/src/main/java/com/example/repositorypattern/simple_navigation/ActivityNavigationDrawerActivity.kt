@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.example.repositorypattern.R
 import com.example.repositorypattern.databinding.ActivityNavigationDrawerBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 
@@ -28,6 +29,8 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navigationView
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
+
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -41,6 +44,7 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         //setupActionBarWithNavController(navController, appBarConfiguration) //drawer menu
         navView.setupWithNavController(navController)
+        bottomNavigationView.setupWithNavController(navController)
     }
 
     //don't use onOptionsItemSelected() implementation yourself
