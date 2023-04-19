@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
@@ -35,7 +36,10 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
             ), drawerLayout
         )
-        setupActionBarWithNavController(navController, appBarConfiguration) //drawer menu
+        //val toolbar: Toolbar = findViewById(R.id.toolbar)
+        //NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration) //drawer menu
         navView.setupWithNavController(navController)
     }
 
