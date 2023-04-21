@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
-import androidx.navigation.ui.*
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupWithNavController
 import com.example.repositorypattern.R
 import com.example.repositorypattern.databinding.ActivityNavigationDrawerBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 
@@ -29,7 +30,7 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navigationView
-        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
+        val bottomNavigationView = binding.bottomNavigationView
 
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -54,6 +55,9 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //let's create a dynamic menu from dynamic_menu.json file
+
+
         menuInflater.inflate(R.menu.options_menu, menu)
         return true
     }
