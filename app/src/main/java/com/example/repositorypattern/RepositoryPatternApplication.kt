@@ -3,9 +3,11 @@ package com.example.repositorypattern
 import android.app.Application
 import android.os.StrictMode
 import com.facebook.shimmer.BuildConfig
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 
+@HiltAndroidApp
 class RepositoryPatternApplication : Application() {
 
     override fun onCreate() {
@@ -34,3 +36,4 @@ class RepositoryPatternApplication : Application() {
         }
     }
 }
+

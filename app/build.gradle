@@ -4,6 +4,7 @@ plugins {
     id 'com.android.application'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'kotlinx-serialization'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -28,8 +29,9 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        //hilt uses Java 8 features
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -100,6 +102,10 @@ android {
     namespace 'com.example.repositorypattern'
     ndkVersion '25.1.8937393'
     compileSdk 33
+}
+
+kapt {
+    correctErrorTypes true
 }
 
 dependencies {
@@ -196,6 +202,9 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
     implementation("com.squareup.moshi:moshi-adapters:1.12.0")
+
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
 }
 
 
