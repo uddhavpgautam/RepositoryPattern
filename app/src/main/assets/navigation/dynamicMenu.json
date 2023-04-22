@@ -1,8 +1,8 @@
 {
-  "menu": {
+  "menuData": {
     "version": "1.0",
     "date": "April-13-2023",
-    "menu_item": [
+    "menuItems": [
       {
         "id": "nav_home",
         "name": "Home",

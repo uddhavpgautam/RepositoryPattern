@@ -7,23 +7,16 @@ import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
 
-
 class NavigationMenuData {
-    @Serializable
-    data class Menu<T>(
-        val version: String,
-        val date: String,
-        val menuItem: T
-    )
 
     @Serializable
-    data class MenuItemLists<T>(val menus: T)
+    data class MenuJson<T>(val menuData: T)
+    @Serializable
+    data class MenuData<T>(val version: String, val date: String, val menuItems: T)
 
     @Serializable
     data class MenuItem(
-        val id: String,
-        val name: String,
-        val onclick: String
+        val id: String, val name: String, val onclick: String
     )
 }
 
@@ -46,27 +39,17 @@ fun readFileUsingBufferedReader(file: String?): String {
 
 fun constructMenuKotlinX(fileJsonString: String?) {
     if (fileJsonString != null) {
-        val deserializedStringApartmentListWithKey1 =
+        val deserializeDynamicMenuData =
             Json.decodeFromString<
-                    NavigationMenuData.Menu<
-                            NavigationMenuData.MenuItemLists<
-                                    List<NavigationMenuData.MenuItem>
+                    NavigationMenuData.MenuJson<
+                            NavigationMenuData.MenuData<
+                                    List<
+                                            NavigationMenuData.MenuItem
+                                            >
                                     >
                             >
                     >(fileJsonString)
-        println(deserializedStringApartmentListWithKey1)
+        println(deserializeDynamicMenuData.toString())
     }
 }
-
-fun main() {
-    val fileJsonString = readFileUsingBufferedReader("/Users/roshanidahal/AndroidStudioProjects/RepositoryPattern/app/src/main/assets/navigation/dynamic_menu.json")
-    constructMenuKotlinX(fileJsonString)
-}
-
-
-
-
-
-
-
 

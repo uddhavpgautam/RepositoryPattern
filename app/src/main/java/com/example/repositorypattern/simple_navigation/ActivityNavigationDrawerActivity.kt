@@ -13,6 +13,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.repositorypattern.R
 import com.example.repositorypattern.databinding.ActivityNavigationDrawerBinding
 import com.google.android.material.navigation.NavigationView
+import java.io.IOException
+import java.io.InputStream
+import java.nio.charset.Charset
 
 
 class ActivityNavigationDrawerActivity : AppCompatActivity() {
@@ -54,9 +57,25 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //let's create a dynamic menu from dynamic_menu.json file
+    private fun readAssets(file: String): String? {
+        val jsonString: String
+        try {
+            val `is`: InputStream = assets.open(file)
+            val size = `is`.available()
+            val buffer = ByteArray(size)
+            `is`.read(buffer)
+            `is`.close()
+            jsonString = String(buffer, Charset.defaultCharset())
+        } catch (exception: IOException) {
+            exception.printStackTrace()
+            return null
+        }
+        return jsonString
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //let's create a dynamic menu from dynamicMenu.json file
+        constructMenuKotlinX(readAssets("navigation/dynamicMenu.json"))
 
         menuInflater.inflate(R.menu.options_menu, menu)
         return true
@@ -68,6 +87,9 @@ class ActivityNavigationDrawerActivity : AppCompatActivity() {
             //do something and return true
         }*/
         val navController = findNavController(R.id.nav_host_fragment)
-        return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item)
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            navController
+        ) || super.onOptionsItemSelected(item)
     }
 }
