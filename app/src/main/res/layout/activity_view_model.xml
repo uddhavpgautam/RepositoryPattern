@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="2"
-    tools:context=".viewmodel_sample.ui.MenuActivity" >
+    tools:context=".viewmodelsample.ui.MenuActivity" >
 
     <TextView
         android:id="@+id/navMenuTv"

@@ -42,4 +42,8 @@
 
     <style name="AppTheme.Detail" parent="@style/AppTheme.NoActionBar" />
 
+    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem" />
+
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem" />
+
 </resources>
