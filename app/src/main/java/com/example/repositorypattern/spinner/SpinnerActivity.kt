@@ -13,9 +13,8 @@ import com.example.repositorypattern.databinding.ActivitySpinnerBinding
 /**
  * SpinnerActivity
  */
-class SpinnerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class SpinnerActivity : AppCompatActivity() {
 
-    private var forCustomData: Boolean = false
     private lateinit var binding: ActivitySpinnerBinding
     private val courses = arrayOf("C", "C++", "Java", "Kotlin", "Microprocessor", "OS")
     private val spinnerData: Array<SpinnerData> = arrayOf(
@@ -29,60 +28,69 @@ class SpinnerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         binding = ActivitySpinnerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        forCustomData = true
-        if (forCustomData) {
-            val customSpinnerAdapter = CustomSpinnerAdapter(
-                this,
-                android.R.layout.simple_spinner_item,
-                spinnerData
-            )
-            binding.spinner.adapter = customSpinnerAdapter
-            binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    adapterView: AdapterView<*>?,
-                    view: View?,
-                    position: Int, id: Long
-                ) {
-                    val spinnerData: SpinnerData = customSpinnerAdapter.getItem(position)
-                    Toast.makeText(
-                        this@SpinnerActivity, "ID: " + spinnerData.id
-                                + "\nName: " + spinnerData.name,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+        setSimpleAdapter(binding)
+        setCustomDataAdapter(binding)
+    }
 
-                override fun onNothingSelected(adapter: AdapterView<*>?) {
-                    TODO("Not yet implemented")
-                }
-            }
-        } else {
-            binding.spinner.onItemSelectedListener = this
-            val arrayAdapter: ArrayAdapter<*> = ArrayAdapter<Any?>(
-                this,
-                /* how we want to show an individual item */
-                R.layout.simple_spinner_item,
-                courses
-            ).apply {
-                setDropDownViewResource(
-                    /* any textview, where we see all items when selected to choose */
-                    R.layout.simple_spinner_dropdown_item
+    private fun setSimpleAdapter(binding: ActivitySpinnerBinding) {
+        val arrayAdapter: ArrayAdapter<*> = ArrayAdapter<Any?>(
+            this,
+            /* how we want to show an individual item */
+            R.layout.simple_spinner_item,
+            courses
+        ).apply {
+            setDropDownViewResource(
+                /* any textview, where we see all items when selected to choose */
+                R.layout.simple_spinner_dropdown_item
+            )
+        }
+        binding.simpleSpinner.adapter = arrayAdapter
+
+        binding.simpleSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int, id: Long
+            ) {
+                Toast.makeText(
+                    applicationContext,
+                    courses[position],
+                    Toast.LENGTH_LONG
                 )
+                    .show()
             }
-            binding.spinner.adapter = arrayAdapter
+
+            override fun onNothingSelected(adapter: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
         }
     }
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(
-            applicationContext,
-            courses[position],
-            Toast.LENGTH_LONG
+    private fun setCustomDataAdapter(binding: ActivitySpinnerBinding) {
+        val customSpinnerAdapter = CustomSpinnerAdapter(
+            this,
+            R.layout.simple_spinner_item,
+            spinnerData
         )
-            .show()
-    }
+        binding.customSpinner.adapter = customSpinnerAdapter
+        binding.customSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int, id: Long
+            ) {
+                val spinnerData: SpinnerData = customSpinnerAdapter.getItem(position)
+                Toast.makeText(
+                    this@SpinnerActivity, "ID: " + spinnerData.id
+                            + "\nName: " + spinnerData.name,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+            override fun onNothingSelected(adapter: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
     }
 
 }

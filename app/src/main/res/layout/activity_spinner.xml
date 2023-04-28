@@ -10,7 +10,7 @@
     tools:context=".spinner.SpinnerActivity">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/simpleSpinner"
         android:layout_height="50dp"
         android:layout_width="160dp"
         android:layout_marginEnd="10dp"
@@ -19,5 +19,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <Spinner
+        android:id="@+id/customSpinner"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
