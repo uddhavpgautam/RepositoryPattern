@@ -18,8 +18,8 @@ class SpinnerActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySpinnerBinding
     private val courses = arrayOf("C", "C++", "Java", "Kotlin", "Microprocessor", "OS")
     private val spinnerData: Array<SpinnerData> = arrayOf(
-        SpinnerData(1, "Joaquin"),
-        SpinnerData(2, "Alberto")
+        SpinnerData(1, "Alberto"),
+        SpinnerData(2, "Uddhav")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +30,7 @@ class SpinnerActivity : AppCompatActivity() {
 
         setSimpleAdapter(binding)
         setCustomDataAdapter(binding)
+        setCustomDataAdapter2(binding)
     }
 
     private fun setSimpleAdapter(binding: ActivitySpinnerBinding) {
@@ -80,6 +81,34 @@ class SpinnerActivity : AppCompatActivity() {
                 position: Int, id: Long
             ) {
                 val spinnerData: SpinnerData = customSpinnerAdapter.getItem(position)
+                Toast.makeText(
+                    this@SpinnerActivity, "ID: " + spinnerData.id
+                            + "\nName: " + spinnerData.name,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            override fun onNothingSelected(adapter: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+    }
+
+    private fun setCustomDataAdapter2(binding: ActivitySpinnerBinding) {
+        val customSpinnerAdapter2 = CustomSpinnerAdapter2(
+            this,
+            R.layout.simple_spinner_item,
+            spinnerData,
+            layoutInflater
+        )
+        binding.customSpinner2.adapter = customSpinnerAdapter2
+        binding.customSpinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View?,
+                position: Int, id: Long
+            ) {
+                val spinnerData: SpinnerData = customSpinnerAdapter2.getItem(position)
                 Toast.makeText(
                     this@SpinnerActivity, "ID: " + spinnerData.id
                             + "\nName: " + spinnerData.name,

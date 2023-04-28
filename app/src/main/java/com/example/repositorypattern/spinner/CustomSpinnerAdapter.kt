@@ -7,6 +7,9 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 
 
+/**
+ * ArrayAdapter required TextView
+ */
 class CustomSpinnerAdapter(
     context: Context,
     textViewResourceId: Int,
